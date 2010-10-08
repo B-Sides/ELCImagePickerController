@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* ELCImagePickerDemoAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1267, 714}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 547}";
+		};
+	};
+	1D3623250D0F684500981E51 /* ELCImagePickerDemoAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {2244, 1513}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 2205}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* ELCImagePickerDemo */ = {
+		activeExec = 0;
+		executables = (
+			E29A5D901239BDCF008BB149 /* ELCImagePickerDemo */,
+		);
+	};
+	28D7ACF60DDB3853001CB0EB /* ELCImagePickerDemoViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1581, 1020}}";
+			sepNavSelRange = "{523, 0}";
+			sepNavVisRange = "{0, 531}";
+		};
+	};
+	28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1078, 1139}}";
+			sepNavSelRange = "{535, 0}";
+			sepNavVisRange = "{510, 355}";
+			sepNavWindowFrame = "{{123, -1050}, {1700, 1050}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = E29A5D901239BDCF008BB149 /* ELCImagePickerDemo */;
+		activeSDKPreference = iphonesimulator4.1;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* ELCImagePickerDemo */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* ELCImagePickerDemo */,
+		);
+		breakpoints = (
+			E29A5F96123AAF7E008BB149 /* AssetPicker.m:43 */,
+		);
+		codeSenseManager = E29A5D9D1239BDDA008BB149 /* Code sense */;
+		executables = (
+			E29A5D901239BDCF008BB149 /* ELCImagePickerDemo */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = 1;
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1163,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 308118966;
+			PBXWorkspaceStateSaveDate = 308118966;
+		};
+		perUserProjectItems = {
+			E217EC421243F00200A6A49A = E217EC421243F00200A6A49A /* PBXTextBookmark */;
+			E217EF511248173500A6A49A = E217EF511248173500A6A49A /* PBXBookmark */;
+			E29A5DAC1239BF28008BB149 = E29A5DAC1239BF28008BB149 /* PBXTextBookmark */;
+			E29A6118123B24F7008BB149 = E29A6118123B24F7008BB149 /* PlistBookmark */;
+			E2B92C8912569DED00CDD591 = E2B92C8912569DED00CDD591 /* PBXTextBookmark */;
+			E2B92C8A12569DED00CDD591 = E2B92C8A12569DED00CDD591 /* PBXTextBookmark */;
+			E2B92C8B12569DED00CDD591 = E2B92C8B12569DED00CDD591 /* PBXTextBookmark */;
+			E2B92C8C12569DED00CDD591 = E2B92C8C12569DED00CDD591 /* PBXTextBookmark */;
+			E2B92CEE125AE4E800CDD591 = E2B92CEE125AE4E800CDD591 /* PBXTextBookmark */;
+			E2B92CEF125AE4E800CDD591 = E2B92CEF125AE4E800CDD591 /* PBXTextBookmark */;
+		};
+		sourceControlManager = E29A5D9C1239BDDA008BB149 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1302, 895}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 374}";
+		};
+	};
+	8D1107310486CEB800E47090 /* ELCImagePickerDemo-Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{0, 0}, {1676, 1028}}";
+		};
+	};
+	E217EC421243F00200A6A49A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 374;
+		vrLoc = 0;
+	};
+	E217EF511248173500A6A49A /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = E29A5FD0123AB3B8008BB149 /* Overlay.png */;
+	};
+	E29A5D901239BDCF008BB149 /* ELCImagePickerDemo */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = ELCImagePickerDemo;
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+		};
+	};
+	E29A5D9C1239BDDA008BB149 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	E29A5D9D1239BDDA008BB149 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	E29A5D9E1239BDFA008BB149 /* ELCImagePickerController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1341, 1598}}";
+			sepNavSelRange = "{165, 284}";
+			sepNavVisRange = "{0, 940}";
+		};
+	};
+	E29A5D9F1239BDFA008BB149 /* ELCImagePickerController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1740, 7786}}";
+			sepNavSelRange = "{2221, 0}";
+			sepNavVisRange = "{0, 1615}";
+			sepNavWindowFrame = "{{0, 0}, {1676, 1028}}";
+		};
+	};
+	E29A5DAC1239BF28008BB149 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* ELCImagePickerDemoAppDelegate.h */;
+		name = "ELCImagePickerDemoAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 547;
+		vrLoc = 0;
+	};
+	E29A5F2B1239CA59008BB149 /* AssetPicker.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = AssetPicker.m;
+		path = /Users/collinruffenach/Desktop/ELCImagePickerDemo/Classes/AssetPicker.m;
+		sourceTree = "<absolute>";
+	};
+	E29A5F96123AAF7E008BB149 /* AssetPicker.m:43 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = E29A5F2B1239CA59008BB149 /* AssetPicker.m */;
+		functionName = "-setAssetsGroup:";
+		hitCount = 0;
+		ignoreCount = 0;
+		lineNumber = 43;
+		modificationTime = 307661904.765689;
+		originalNumberOfMultipleMatches = 1;
+		state = 0;
+	};
+	E29A6118123B24F7008BB149 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* ELCImagePickerDemo-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIdentifier,
+		);
+		name = "/Users/collinruffenach/Desktop/ELCImagePickerDemo/ELCImagePickerDemo-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	E2B92C8912569DED00CDD591 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF60DDB3853001CB0EB /* ELCImagePickerDemoViewController.h */;
+		name = "ELCImagePickerDemoViewController.h: 19";
+		rLen = 0;
+		rLoc = 523;
+		rType = 0;
+		vrLen = 531;
+		vrLoc = 0;
+	};
+	E2B92C8A12569DED00CDD591 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* ELCImagePickerDemoAppDelegate.m */;
+		name = "ELCImagePickerDemoAppDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2205;
+		vrLoc = 0;
+	};
+	E2B92C8B12569DED00CDD591 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */;
+		name = "ELCImagePickerDemoViewController.m: 25";
+		rLen = 115;
+		rLoc = 591;
+		rType = 0;
+		vrLen = 1784;
+		vrLoc = 3;
+	};
+	E2B92C8C12569DED00CDD591 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29A5D9F1239BDFA008BB149 /* ELCImagePickerController.m */;
+		name = "ELCImagePickerController.m: 24";
+		rLen = 0;
+		rLoc = 591;
+		rType = 0;
+		vrLen = 2024;
+		vrLoc = 0;
+	};
+	E2B92CEE125AE4E800CDD591 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29A5D9E1239BDFA008BB149 /* ELCImagePickerController.h */;
+		name = "ELCImagePickerController.h: 9";
+		rLen = 284;
+		rLoc = 165;
+		rType = 0;
+		vrLen = 940;
+		vrLoc = 0;
+	};
+	E2B92CEF125AE4E800CDD591 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E29A5D9F1239BDFA008BB149 /* ELCImagePickerController.m */;
+		name = "ELCImagePickerController.m: 72";
+		rLen = 0;
+		rLoc = 2221;
+		rType = 0;
+		vrLen = 1615;
+		vrLoc = 0;
+	};
+}
