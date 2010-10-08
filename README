@@ -1,6 +1,6 @@
 ****** HOW TO USE ******
 
-The image picker is created and displayed in a very similar manner to the UIImagePickerController. The sample application that is part of the GitHub project where I distribute the class shows its use but I will go into detail here. To display the controller you instantiate it and display it modally like so.
+The image picker is created and displayed in a very similar manner to the UIImagePickerController. The sample application  shows its use. To display the controller you instantiate it and display it modally like so.
 
 ELCImagePickerController *controller = [[ELCImagePickerController alloc] initImagePicker];
 [controller setDelegate:self];
