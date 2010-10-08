@@ -299,7 +299,7 @@
 							<real>252</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>0 55 1676 973 0 0 1680 1028 </string>
+						<string>0 204 1676 973 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -317,7 +317,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ELCImagePickerController.m</string>
+								<string>ELCImagePickerController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ELCImagePickerController.m</string>
+										<string>ELCImagePickerController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E2B92CEF125AE4E800CDD591</string>
+										<string>E295F2D6125E9EA700D336FF</string>
 										<key>history</key>
 										<array>
 											<string>E29A5DAC1239BF28008BB149</string>
@@ -339,8 +339,8 @@
 											<string>E2B92C8912569DED00CDD591</string>
 											<string>E2B92C8A12569DED00CDD591</string>
 											<string>E2B92C8B12569DED00CDD591</string>
-											<string>E2B92CEE125AE4E800CDD591</string>
-											<string>E2B92C8C12569DED00CDD591</string>
+											<string>E295F2D4125E9EA700D336FF</string>
+											<string>E295F2D5125E9EA700D336FF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -354,7 +354,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1402, 927}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 55 1676 973 0 0 1680 1028 </string>
+								<string>0 204 1676 973 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -374,7 +374,7 @@
 								<key>Frame</key>
 								<string>{{0, 932}, {1402, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 55 1676 973 0 0 1680 1028 </string>
+								<string>0 204 1676 973 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -398,9 +398,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>E2B92BE4125689A500CDD591</string>
+				<string>E295F2D7125E9EA700D336FF</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>E2B92BE5125689A500CDD591</string>
+				<string>E295F2D8125E9EA700D336FF</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -538,16 +538,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>E2B92CA01256A7B900CDD591</string>
-		<string>E2B92C1112568B9B00CDD591</string>
-		<string>E2B92BEF125689A500CDD591</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E29A5DA81239BF24008BB149</string>
 		<string>/Users/collinruffenach/Development/ELCImagePickerDemo/ELCImagePickerDemo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 55 1676 973 0 0 1680 1028 </string>
+	<string>0 204 1676 973 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -568,7 +563,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ELCImagePickerDemoViewController.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -577,7 +572,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1139, 272}}</string>
 								<key>RubberWindowFrame</key>
-								<string>537 432 1139 554 0 0 1680 1028 </string>
+								<string>537 432 1139 554 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -585,8 +580,6 @@
 							<string>272pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -603,7 +596,7 @@
 								<key>Frame</key>
 								<string>{{0, 277}, {1139, 236}}</string>
 								<key>RubberWindowFrame</key>
-								<string>537 432 1139 554 0 0 1680 1028 </string>
+								<string>537 432 1139 554 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -626,7 +619,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>E29A5DA81239BF24008BB149</string>
-				<string>E2B92BE6125689A500CDD591</string>
+				<string>E295F2D9125E9EA700D336FF</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -635,7 +628,7 @@
 			<key>WindowContentMinSize</key>
 			<string>486 300</string>
 			<key>WindowString</key>
-			<string>537 432 1139 554 0 0 1680 1028 </string>
+			<string>537 432 1139 554 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>E29A5DA81239BF24008BB149</string>
 			<key>WindowToolIsVisible</key>

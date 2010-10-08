@@ -1,3 +1,20 @@
+****** HOW TO USE ******
+
+The image picker is created and displayed in a very similar manner to the UIImagePickerController. The sample application that is part of the GitHub project where I distribute the class shows its use but I will go into detail here. To display the controller you instantiate it and display it modally like so.
+
+ELCImagePickerController *controller = [[ELCImagePickerController alloc] initImagePicker];
+[controller setDelegate:self];
+[self presentModalViewController:controller animated:YES];
+[controller release];
+The ELCImagePickerController will return the select images back to the ELCImagePickerControllerDelegate. The delegate contains to methods very similar to the UIImagePickerControllerDelegate. Instead of returning one dictionary representing a single image the controller sends back an array of similarly structured dictionaries. The two delegate methods are:]
+
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info;
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker;
+
+
+
+
+
 The MIT License
 
 Copyright (c) 2010 ELC Technologies
