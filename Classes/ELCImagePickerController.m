@@ -86,9 +86,11 @@
 	
 	[self.navigationItem setTitle:@"Loading..."];
 	
-	queue = [NSOperationQueue mainQueue];
-	NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(preparePhotos) object:nil];
-	[queue addOperation:operation];
+//	queue = [NSOperationQueue mainQueue];
+//	NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(preparePhotos) object:nil];
+//	[queue addOperation:operation];
+	
+	[self performSelectorInBackground:@selector(preparePhotos) withObject:nil];
 	
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss:)];
 	[self.navigationItem setRightBarButtonItem:cancelButton];
@@ -101,6 +103,8 @@
 }
 
 -(void)preparePhotos {
+	
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	void (^assetGroupEnumerator)(struct ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) {
 		if(group != nil) {
@@ -120,6 +124,7 @@
 							 NSLog(@"A problem occured");					
 						 }];	
 	[library release];
+	[pool release];
 }
 
 -(void)reloadTableView {
