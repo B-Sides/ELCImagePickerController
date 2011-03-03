@@ -49,7 +49,7 @@
     
 //    if([(ELCAssetTablePicker*)self.parent totalSelectedAssets] >= 10) {
 //        
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Maximum Reached" message:@"You've reached the max number of photos for your video." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Maximum Reached" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
 //		[alert show];
 //		[alert release];	
 //
