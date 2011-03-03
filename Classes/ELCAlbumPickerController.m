@@ -127,7 +127,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	ELCAssetTablePicker *picker = [[ELCAssetTablePicker alloc] initWithNibName:@"AssetTablePicker" bundle:[NSBundle mainBundle]];
+	ELCAssetTablePicker *picker = [[ELCAssetTablePicker alloc] initWithNibName:@"ELCAssetTablePicker" bundle:[NSBundle mainBundle]];
 	picker.parent = self;
 
     // Move me    
