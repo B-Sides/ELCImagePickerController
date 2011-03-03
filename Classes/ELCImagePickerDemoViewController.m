@@ -6,7 +6,10 @@
 //  Copyright 2010 ELC Technologies. All rights reserved.
 //
 
+#import "ELCImagePickerDemoAppDelegate.h"
 #import "ELCImagePickerDemoViewController.h"
+#import "ELCImagePickerController.h"
+#import "ELCAlbumPickerController.h"
 
 @implementation ELCImagePickerDemoViewController
 
@@ -14,10 +17,15 @@
 
 -(IBAction)launchController {
 	
-	ELCImagePickerController *controller = [[ELCImagePickerController alloc] initImagePicker];
-	[controller setDelegate:self];
-	[self presentModalViewController:controller animated:YES];
-	[controller release];
+    ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];    
+	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
+    [albumController setParent:elcPicker];
+	[elcPicker setDelegate:self];
+    
+    ELCImagePickerDemoAppDelegate *app = (ELCImagePickerDemoAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[app.viewController presentModalViewController:elcPicker animated:YES];
+    [elcPicker release];
+    [albumController release];
 }
 
 #pragma mark ELCImagePickerControllerDelegate Methods
