@@ -89,8 +89,7 @@
     return ceil([self.assetGroup numberOfAssets] / 4.0);
 }
 
-// ugly
--(NSArray*)assetsForIndexPath:(NSIndexPath*)_indexPath {
+- (NSArray*)assetsForIndexPath:(NSIndexPath*)_indexPath {
     
 	int index = (_indexPath.row*4);
 	int maxIndex = (_indexPath.row*4+3);

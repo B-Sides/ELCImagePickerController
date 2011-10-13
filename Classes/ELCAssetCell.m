@@ -14,7 +14,7 @@
 
 -(id)initWithAssets:(NSArray*)_assets reuseIdentifier:(NSString*)_identifier {
     
-	if(self = [super initWithStyle:UITableViewStylePlain reuseIdentifier:_identifier]) {
+	if(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_identifier]) {
         
 		self.rowAssets = _assets;
 	}

@@ -51,7 +51,7 @@
 #pragma mark Memory management
 
 - (void)didReceiveMemoryWarning {    
-    NSLog(@"ELC Image Picker received memory warning!!!");
+    NSLog(@"ELC Image Picker received memory warning.");
     
     [super didReceiveMemoryWarning];
 }

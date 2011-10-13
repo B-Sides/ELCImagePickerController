@@ -34,6 +34,10 @@
 	
 	[self dismissModalViewControllerAnimated:YES];
 	
+    for (UIView *v in [scrollview subviews]) {
+        [v removeFromSuperview];
+    }
+    
 	CGRect workingFrame = scrollview.frame;
 	workingFrame.origin.x = 0;
 	

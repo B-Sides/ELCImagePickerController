@@ -6,13 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface ELCAlbumPickerController : UITableViewController {
 	
 	NSMutableArray *assetGroups;
 	NSOperationQueue *queue;
 	id parent;
+    
+    ALAssetsLibrary *library;
 }
 
 @property (nonatomic, assign) id parent;

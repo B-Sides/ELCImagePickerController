@@ -5,7 +5,6 @@
 //  Copyright 2011 ELC Technologies. All rights reserved.
 //
 
-#import <AssetsLibrary/AssetsLibrary.h>
 #import "ELCAlbumPickerController.h"
 #import "ELCImagePickerController.h"
 #import "ELCAssetTablePicker.h"
@@ -29,6 +28,8 @@
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
 	self.assetGroups = tempArray;
     [tempArray release];
+    
+    library = [[ALAssetsLibrary alloc] init];      
 
     // Load Albums into assetGroups
     dispatch_async(dispatch_get_main_queue(), ^
@@ -45,9 +46,6 @@
             
             [self.assetGroups addObject:group];
 
-            // Keep this line!  w/o it the asset count is broken for some reason.  Makes no sense
-            NSLog(@"count: %d", [group numberOfAssets]);
-
             // Reload albums
             [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
         };
@@ -63,13 +61,10 @@
         };	
                 
         // Enumerate Albums
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];        
         [library enumerateGroupsWithTypes:ALAssetsGroupAll
                                usingBlock:assetGroupEnumerator 
                              failureBlock:assetGroupEnumberatorFailure];
         
-        
-        [library release];
         [pool release];
     });    
 }
@@ -161,7 +156,8 @@
 
 - (void)dealloc 
 {	
-	[assetGroups release];
+    [assetGroups release];
+    [library release];
     [super dealloc];
 }
 
