@@ -17,7 +17,6 @@
 @synthesize delegate;
 
 -(void)cancelImagePicker {
-
 	if([delegate respondsToSelector:@selector(elcImagePickerControllerDidCancel:)]) {
 		[delegate performSelector:@selector(elcImagePickerControllerDidCancel:) withObject:self];
 	}
@@ -31,7 +30,7 @@
 
 		NSMutableDictionary *workingDictionary = [[NSMutableDictionary alloc] init];
 		[workingDictionary setObject:[asset valueForProperty:ALAssetPropertyType] forKey:@"UIImagePickerControllerMediaType"];
-		[workingDictionary setObject:[UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage] scale:1.0 orientation:[[asset valueForProperty:@"ALAssetPropertyOrientation"] intValue]] forKey:@"UIImagePickerControllerOriginalImage"];
+        [workingDictionary setObject:[UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]] forKey:@"UIImagePickerControllerOriginalImage"];
 		[workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:@"UIImagePickerControllerReferenceURL"];
 		
 		[returnArray addObject:workingDictionary];
