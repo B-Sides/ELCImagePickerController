@@ -15,6 +15,8 @@
 		2899E5220DE3E06400AC0155 /* ELCImagePickerDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ELCImagePickerDemoViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ELCImagePickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */; };
+		83C6BC9714476B280064D71D /* elc-ios-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */; };
+		83C6BC9814476B280064D71D /* elc-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6BC9614476B280064D71D /* elc-ios-icon.png */; };
 		8FBE5D99131DC988001603C7 /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE5D89131DC988001603C7 /* ELCAlbumPickerController.m */; };
 		8FBE5D9A131DC988001603C7 /* ELCAssetTablePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE5D8B131DC988001603C7 /* ELCAssetTablePicker.m */; };
 		8FBE5D9B131DC988001603C7 /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBE5D8D131DC988001603C7 /* ELCAsset.m */; };
@@ -42,6 +44,8 @@
 		28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerDemoViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ELCImagePickerDemo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerDemo_Prefix.pch; sourceTree = "<group>"; };
+		83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon@2x.png"; sourceTree = "<group>"; };
+		83C6BC9614476B280064D71D /* elc-ios-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ELCImagePickerDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ELCImagePickerDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		8FBE5D88131DC988001603C7 /* ELCAlbumPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAlbumPickerController.h; sourceTree = "<group>"; };
 		8FBE5D89131DC988001603C7 /* ELCAlbumPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAlbumPickerController.m; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */,
+				83C6BC9614476B280064D71D /* elc-ios-icon.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* ELCImagePickerDemo-Info.plist */,
 			);
@@ -230,6 +236,8 @@
 				8FBE5DA1131DC988001603C7 /* ELCAssetPicker.xib in Resources */,
 				8FBE5DA2131DC988001603C7 /* Overlay.png in Resources */,
 				8FBE5DA3131DC988001603C7 /* Overlay@2x.png in Resources */,
+				83C6BC9714476B280064D71D /* elc-ios-icon@2x.png in Resources */,
+				83C6BC9814476B280064D71D /* elc-ios-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +273,7 @@
 				GCC_PREFIX_HEADER = ELCImagePickerDemo_Prefix.pch;
 				INFOPLIST_FILE = "ELCImagePickerDemo-Info.plist";
 				PRODUCT_NAME = ELCImagePickerDemo;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -277,6 +286,7 @@
 				GCC_PREFIX_HEADER = ELCImagePickerDemo_Prefix.pch;
 				INFOPLIST_FILE = "ELCImagePickerDemo-Info.plist";
 				PRODUCT_NAME = ELCImagePickerDemo;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
