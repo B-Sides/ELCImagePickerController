@@ -15,8 +15,14 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIScrollView *scrollview;
+@property (nonatomic, copy) NSArray *chosenImages;
 
+// the default picker controller
 -(IBAction)launchController;
+
+// a special picker controller that limits itself to a single album, and lets the user
+// pick just one image from that album.
+-(IBAction)launchSpecialController;
 
 @end
 
