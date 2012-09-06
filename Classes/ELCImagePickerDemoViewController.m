@@ -56,6 +56,8 @@
 	ELCAssetTablePicker *tablePicker = [[ELCAssetTablePicker alloc] initWithNibName:@"ELCAssetTablePicker" bundle:[NSBundle mainBundle]];
     tablePicker.singleSelection = YES;
     tablePicker.immediateReturn = YES;
+    tablePicker.startAtBottom = YES;
+    
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:tablePicker];
     elcPicker.delegate = self;
 	tablePicker.parent = elcPicker;

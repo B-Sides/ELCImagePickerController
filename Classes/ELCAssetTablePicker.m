@@ -84,9 +84,18 @@
          [self.elcAssets addObject:elcAsset];
      }];    
     NSLog(@"done enumerating photos");
-	
+    
 	[self.tableView reloadData];
-	[self.navigationItem setTitle:@"Pick Photos"];
+    // scroll to bottom
+    int section = [self numberOfSectionsInTableView:self.tableView] - 1;
+    int row = [self tableView:self.tableView numberOfRowsInSection:section] - 1;
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:row
+                                         inSection:section];
+    [self.tableView scrollToRowAtIndexPath:ip
+                          atScrollPosition:UITableViewScrollPositionBottom
+                                  animated:NO];
+    
+	[self.navigationItem setTitle:self.singleSelection ? @"Pick Photo" : @"Pick Photos"];
     
     [pool release];
 
