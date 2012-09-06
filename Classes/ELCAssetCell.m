@@ -34,7 +34,10 @@
 
 -(void)layoutSubviews {
     
-	CGRect frame = CGRectMake(4, 2, 75, 75);
+    CGFloat totalWidth = self.rowAssets.count * 75 + (self.rowAssets.count - 1) * 4;
+    CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
+    
+	CGRect frame = CGRectMake(startX, 2, 75, 75);
 	
 	for(ELCAsset *elcAsset in self.rowAssets) {
 		
