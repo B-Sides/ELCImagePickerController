@@ -77,7 +77,7 @@
 
 -(void)selectedAssets:(NSArray*)_assets {
 	
-	[(ELCImagePickerController*)parent selectedAssets:_assets];
+	[parent selectedAssets:_assets];
 }
 
 #pragma mark -
