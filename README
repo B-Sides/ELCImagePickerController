@@ -12,7 +12,11 @@ The ELCImagePickerController will return the select images back to the ELCImageP
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info;
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker;
 
+*-*-*-*-* ABOUT THIS HERE FORK *-*-*-*-*
 
+The image tableview in this fork allows for some customization, including limiting
+to just one photo album, limiting to single image selection, and automatically
+scrolling to the bottom. See the demo viewcontroller for example usage.
 
 
 
