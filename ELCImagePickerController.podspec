@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
       :commit => 'HEAD' 
     }
     s.platform = :ios, '5.0'
-    s.resources = "Classes/**/*.{xib}"
-    s.source_files = 'Classes/**/*.{h,m}'
+    s.resources = 'Classes/**/*.{xib,png}'
+    s.source_files = 'Classes/ELCAlbumPickerController.{h,m}', 'Classes/ELCAsset.{h,m}', 'Classes/ELCAssetCell.{h,m}', 'Classes/ELCAssetTablePicker.{h,m}', 'Classes/ELCImagePickerController.{h,m}'
     s.framework = 'Foundation', 'UIKit'
     s.requires_arc = false
 end
