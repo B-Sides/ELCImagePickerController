@@ -23,7 +23,7 @@
 	[elcPicker setDelegate:self];
     
     ELCImagePickerDemoAppDelegate *app = (ELCImagePickerDemoAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[app.viewController presentModalViewController:elcPicker animated:YES];
+    [app.viewController presentViewController:elcPicker animated:YES completion:nil];
     [elcPicker release];
     [albumController release];
 }
@@ -32,7 +32,7 @@
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
 	
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 	
     for (UIView *v in [scrollview subviews]) {
         [v removeFromSuperview];
@@ -59,7 +59,7 @@
 
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker {
 
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
