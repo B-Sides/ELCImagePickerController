@@ -44,7 +44,11 @@
 	}
 	
     [self popToRootViewControllerAnimated:NO];
-    [[self parentViewController] dismissViewControllerAnimated:YES completion:nil];
+    if ([[self parentViewController] respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]){
+        [[self parentViewController] dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [[self parentViewController] dismissModalViewControllerAnimated:YES];
+    }
     
 	if([delegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
 		[delegate performSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:) withObject:self withObject:[NSArray arrayWithArray:returnArray]];
