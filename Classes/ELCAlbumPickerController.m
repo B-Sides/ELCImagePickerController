@@ -44,7 +44,16 @@
                 return;
             }
             
-            [self.assetGroups addObject:group];
+            // added fix for camera albums order
+            NSString *sGroupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
+            NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
+            
+            if ([[sGroupPropertyName lowercaseString] isEqualToString:@"camera roll"] && nType == ALAssetsGroupSavedPhotos) {
+                [self.assetGroups insertObject:group atIndex:0];
+            }
+            else {
+                [self.assetGroups addObject:group];
+            }
 
             // Reload albums
             [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
