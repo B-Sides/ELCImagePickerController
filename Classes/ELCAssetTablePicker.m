@@ -56,6 +56,9 @@
     NSLog(@"done enumerating photos");
 	
 	[self.tableView reloadData];
+    // JC - start the table view at the bottom, most recent, mimic's Apple's ImagePicker
+    NSIndexPath *ipath = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:0]-1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:ipath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 	[self.navigationItem setTitle:@"Pick Photos"];
     
     [pool release];
