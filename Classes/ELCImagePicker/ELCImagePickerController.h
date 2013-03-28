@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ELCAssetSelectionDelegate.h"
 
-@interface ELCImagePickerController : UINavigationController {
+@interface ELCImagePickerController : UINavigationController <ELCAssetSelectionDelegate> {
 
 	id delegate;
 }
 
 @property (nonatomic, assign) id delegate;
 
--(void)selectedAssets:(NSArray*)_assets;
 -(void)cancelImagePicker;
 
 @end

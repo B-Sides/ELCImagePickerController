@@ -8,18 +8,25 @@
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
+@class ELCAsset;
+
+@protocol ELCAssetDelegate <NSObject>
+
+@optional
+- (void)assetSelected:(ELCAsset *)asset;
+
+@end
 
 @interface ELCAsset : UIView {
 	ALAsset *asset;
 	UIImageView *overlayView;
-	BOOL selected;
-	id parent;
+	id <ELCAssetDelegate> parent;
 }
 
 @property (nonatomic, retain) ALAsset *asset;
 @property (nonatomic, assign) id parent;
+@property (nonatomic, assign) BOOL selected;
 
 -(id)initWithAsset:(ALAsset*)_asset;
--(BOOL)selected;
 
 @end

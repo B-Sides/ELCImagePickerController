@@ -12,6 +12,7 @@
 
 @synthesize asset;
 @synthesize parent;
+@synthesize selected = _selected;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -25,6 +26,7 @@
 	if (self = [super initWithFrame:CGRectMake(0, 0, 0, 0)]) {
 		
 		self.asset = _asset;
+        _selected = NO;
 		
 		CGRect viewFrames = CGRectMake(0, 0, 75, 75);
 		
@@ -44,8 +46,7 @@
 }
 
 -(void)toggleSelection {
-    
-	overlayView.hidden = !overlayView.hidden;
+    self.selected = !self.selected;
     
 //    if([(ELCAssetTablePicker*)self.parent totalSelectedAssets] >= 10) {
 //        
@@ -57,19 +58,19 @@
 //    }
 }
 
--(BOOL)selected {
-	
-	return !overlayView.hidden;
-}
-
--(void)setSelected:(BOOL)_selected {
-    
-	[overlayView setHidden:!_selected];
+-(void)setSelected:(BOOL)selected {
+    _selected = selected;
+	[overlayView setHidden:!selected];
+    if (selected) {
+        if ([parent respondsToSelector:@selector(assetSelected:)]) {
+            [parent assetSelected:self];
+        }
+    }
 }
 
 - (void)dealloc 
 {    
-    self.asset = nil;
+    [asset release];
 	[overlayView release];
     [super dealloc];
 }

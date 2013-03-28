@@ -7,8 +7,10 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "ELCAsset.h"
+#import "ELCAssetSelectionDelegate.h"
 
-@interface ELCAssetTablePicker : UITableViewController
+@interface ELCAssetTablePicker : UITableViewController <ELCAssetDelegate>
 {
 	ALAssetsGroup *assetGroup;
 	
@@ -20,15 +22,18 @@
 	NSOperationQueue *queue;
 }
 
-@property (nonatomic, assign) id parent;
-@property (nonatomic, assign) ALAssetsGroup *assetGroup;
+@property (nonatomic, assign) id <ELCAssetSelectionDelegate> parent;
+@property (nonatomic, retain) ALAssetsGroup *assetGroup;
 @property (nonatomic, retain) NSMutableArray *elcAssets;
 @property (nonatomic, retain) IBOutlet UILabel *selectedAssetsLabel;
-@property (nonatomic, assign) BOOL startAtBottom;
+@property (nonatomic, assign) BOOL singleSelection;
+@property (nonatomic, assign) BOOL immediateReturn;
 
 -(int)totalSelectedAssets;
 -(void)preparePhotos;
 
 -(void)doneAction:(id)sender;
+
+- (void)assetSelected:(ELCAsset *)asset;
 
 @end
