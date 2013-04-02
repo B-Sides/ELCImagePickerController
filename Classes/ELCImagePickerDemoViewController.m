@@ -2,7 +2,7 @@
 //  ELCImagePickerDemoViewController.m
 //  ELCImagePickerDemo
 //
-//  Created by Collin Ruffenach on 9/9/10.
+//  Created by ELC on 9/9/10.
 //  Copyright 2010 ELC Technologies. All rights reserved.
 //
 
@@ -14,11 +14,11 @@
 
 @implementation ELCImagePickerDemoViewController
 
-@synthesize scrollview;
-@synthesize chosenImages;
+@synthesize scrollView = _scrollView;
+@synthesize chosenImages = _chosenImages;
 
--(IBAction)launchController {
-	
+- (IBAction)launchController
+{	
     ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];    
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
     [albumController setParent:elcPicker];
@@ -35,7 +35,8 @@
     [albumController release];
 }
 
-- (IBAction)launchSpecialController {
+- (IBAction)launchSpecialController
+{
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     NSMutableArray *groups = [NSMutableArray array];
     [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
@@ -57,7 +58,8 @@
     }];
 }
 
-- (void)displayPickerForGroup:(ALAssetsGroup *)group {
+- (void)displayPickerForGroup:(ALAssetsGroup *)group
+{
 	ELCAssetTablePicker *tablePicker = [[ELCAssetTablePicker alloc] initWithNibName:@"ELCAssetTablePicker" bundle:[NSBundle mainBundle]];
     tablePicker.singleSelection = YES;
     tablePicker.immediateReturn = YES;
@@ -68,14 +70,19 @@
     
     // Move me
     tablePicker.assetGroup = group;
-    [tablePicker.assetGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
+    [tablePicker.assetGroup setAssetsFilter:[ALAssetsFilter allAssets]];
     
-	[self presentModalViewController:elcPicker animated:YES];
+    if ([self respondsToSelector:@selector(presentViewController:animated:completion:)]){
+        [self presentViewController:elcPicker animated:YES completion:nil];
+    } else {
+        [self presentModalViewController:elcPicker animated:YES];
+    }
 	[tablePicker release];
     [elcPicker release];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         return YES;
     } else {
@@ -85,19 +92,19 @@
 
 #pragma mark ELCImagePickerControllerDelegate Methods
 
-- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info {
-
+- (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
+{
     if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]){
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self dismissModalViewControllerAnimated:YES];
     }
 	
-    for (UIView *v in [scrollview subviews]) {
+    for (UIView *v in [_scrollView subviews]) {
         [v removeFromSuperview];
     }
     
-	CGRect workingFrame = scrollview.frame;
+	CGRect workingFrame = _scrollView.frame;
 	workingFrame.origin.x = 0;
     
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];
@@ -111,7 +118,7 @@
 		[imageview setContentMode:UIViewContentModeScaleAspectFit];
 		imageview.frame = workingFrame;
 		
-		[scrollview addSubview:imageview];
+		[_scrollView addSubview:imageview];
 		[imageview release];
 		
 		workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
@@ -119,13 +126,12 @@
     
     self.chosenImages = images;
 	
-	[scrollview setPagingEnabled:YES];
-	[scrollview setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
+	[_scrollView setPagingEnabled:YES];
+	[_scrollView setContentSize:CGSizeMake(workingFrame.origin.x, workingFrame.size.height)];
 }
 
-- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker {
-
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
+{
     if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]){
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
@@ -133,20 +139,24 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
 
 
-- (void)dealloc {
+- (void)dealloc
+{
+    [_scrollView release];
     [super dealloc];
 }
 

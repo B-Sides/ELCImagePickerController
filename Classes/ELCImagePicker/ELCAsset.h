@@ -1,7 +1,7 @@
 //
 //  Asset.h
 //
-//  Created by Matt Tuzzolo on 2/15/11.
+//  Created by ELC on 2/15/11.
 //  Copyright 2011 ELC Technologies. All rights reserved.
 //
 
@@ -17,16 +17,12 @@
 
 @end
 
-@interface ELCAsset : UIView {
-	ALAsset *asset;
-	UIImageView *overlayView;
-	id <ELCAssetDelegate> parent;
-}
+@interface ELCAsset : NSObject
 
 @property (nonatomic, retain) ALAsset *asset;
-@property (nonatomic, assign) id parent;
+@property (nonatomic, assign) id<ELCAssetDelegate> parent;
 @property (nonatomic, assign) BOOL selected;
 
--(id)initWithAsset:(ALAsset*)_asset;
+- (id)initWithAsset:(ALAsset *)asset;
 
 @end

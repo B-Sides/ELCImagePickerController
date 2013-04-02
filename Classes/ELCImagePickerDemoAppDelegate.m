@@ -2,7 +2,7 @@
 //  ELCImagePickerDemoAppDelegate.m
 //  ELCImagePickerDemo
 //
-//  Created by Collin Ruffenach on 9/9/10.
+//  Created by ELC on 9/9/10.
 //  Copyright 2010 ELC Technologies. All rights reserved.
 //
 
@@ -11,8 +11,8 @@
 
 @implementation ELCImagePickerDemoAppDelegate
 
-@synthesize window;
-@synthesize viewController;
+@synthesize window = _window;
+@synthesize viewController = _viewController;
 
 
 #pragma mark -
@@ -23,8 +23,9 @@
     // Override point for customization after application launch.
 
     // Add the view controller's view to the window and display.
-    [window addSubview:viewController.view];
-    [window makeKeyAndVisible];
+    self.window.rootViewController = _viewController;
+//    [window addSubview:viewController.view];
+    [self.window makeKeyAndVisible];
 
     return YES;
 }
@@ -79,8 +80,8 @@
 
 
 - (void)dealloc {
-    [viewController release];
-    [window release];
+    [_viewController release];
+    [_window release];
     [super dealloc];
 }
 

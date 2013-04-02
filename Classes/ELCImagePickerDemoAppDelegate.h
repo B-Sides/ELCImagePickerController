@@ -2,7 +2,7 @@
 //  ELCImagePickerDemoAppDelegate.h
 //  ELCImagePickerDemo
 //
-//  Created by Collin Ruffenach on 9/9/10.
+//  Created by ELC on 9/9/10.
 //  Copyright 2010 ELC Technologies. All rights reserved.
 //
 
@@ -10,10 +10,7 @@
 
 @class ELCImagePickerDemoViewController;
 
-@interface ELCImagePickerDemoAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    ELCImagePickerDemoViewController *viewController;
-}
+@interface ELCImagePickerDemoAppDelegate : NSObject <UIApplicationDelegate> 
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet ELCImagePickerDemoViewController *viewController;
