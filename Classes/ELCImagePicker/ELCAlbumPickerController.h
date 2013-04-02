@@ -9,16 +9,9 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "ELCAssetSelectionDelegate.h"
 
-@interface ELCAlbumPickerController : UITableViewController <ELCAssetSelectionDelegate> {
-	
-	NSMutableArray *assetGroups;
-	NSOperationQueue *queue;
-	id <ELCAssetSelectionDelegate> parent;
-    
-    ALAssetsLibrary *library;
-}
+@interface ELCAlbumPickerController : UITableViewController <ELCAssetSelectionDelegate>
 
-@property (nonatomic, assign) id parent;
+@property (nonatomic, assign) id<ELCAssetSelectionDelegate> parent;
 @property (nonatomic, retain) NSMutableArray *assetGroups;
 
 @end

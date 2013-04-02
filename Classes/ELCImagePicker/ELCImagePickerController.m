@@ -14,19 +14,20 @@
 
 @implementation ELCImagePickerController
 
-@synthesize delegate;
+@synthesize delegate = _myDelegate;
 
--(void)cancelImagePicker {
-	if([delegate respondsToSelector:@selector(elcImagePickerControllerDidCancel:)]) {
-		[delegate performSelector:@selector(elcImagePickerControllerDidCancel:) withObject:self];
+- (void)cancelImagePicker
+{
+	if([_myDelegate respondsToSelector:@selector(elcImagePickerControllerDidCancel:)]) {
+		[_myDelegate performSelector:@selector(elcImagePickerControllerDidCancel:) withObject:self];
 	}
 }
 
--(void)selectedAssets:(NSArray*)_assets {
-
+- (void)selectedAssets:(NSArray *)assets
+{
 	NSMutableArray *returnArray = [[[NSMutableArray alloc] init] autorelease];
 	
-	for(ALAsset *asset in _assets) {
+	for(ALAsset *asset in assets) {
 
 		NSMutableDictionary *workingDictionary = [[NSMutableDictionary alloc] init];
 		[workingDictionary setObject:[asset valueForProperty:ALAssetPropertyType] forKey:@"UIImagePickerControllerMediaType"];
@@ -44,18 +45,19 @@
 	}
 	
     [self popToRootViewControllerAnimated:NO];
-    if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]){
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }
+//    if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]){
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    } else {
+//        [self dismissModalViewControllerAnimated:YES];
+//    }
     
-	if([delegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
-		[delegate performSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:) withObject:self withObject:[NSArray arrayWithArray:returnArray]];
+	if([_myDelegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
+		[_myDelegate performSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:) withObject:self withObject:[NSArray arrayWithArray:returnArray]];
 	}
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         return YES;
     } else {
@@ -66,7 +68,8 @@
 #pragma mark -
 #pragma mark Memory management
 
-- (void)didReceiveMemoryWarning {    
+- (void)didReceiveMemoryWarning
+{
     NSLog(@"ELC Image Picker received memory warning.");
     
     [super didReceiveMemoryWarning];
@@ -77,7 +80,8 @@
 }
 
 
-- (void)dealloc {
+- (void)dealloc
+{
     NSLog(@"deallocing ELCImagePickerController");
     [super dealloc];
 }

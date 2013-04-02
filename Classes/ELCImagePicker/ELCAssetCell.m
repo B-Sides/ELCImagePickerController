@@ -26,6 +26,7 @@
 	if(self) {
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
         [self addGestureRecognizer:tapRecognizer];
+        [tapRecognizer release];
         
 		self.rowAssets = assets;
         NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithCapacity:4];
@@ -52,7 +53,7 @@
         self.imageViewArray = mutableArray;
         [mutableArray release];
         self.overlayViewArray = overlayArray;
-        [_overlayViewArray release];
+        [overlayArray release];
 	}
 	return self;
 }
@@ -121,6 +122,7 @@
 {
 	[_rowAssets release];
     [_imageViewArray release];
+    [_overlayViewArray release];
 	[super dealloc];
 }
 

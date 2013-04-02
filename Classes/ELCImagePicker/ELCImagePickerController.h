@@ -9,21 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "ELCAssetSelectionDelegate.h"
 
-@interface ELCImagePickerController : UINavigationController <ELCAssetSelectionDelegate> {
+@class ELCImagePickerController;
 
-	id delegate;
-}
-
-@property (nonatomic, assign) id delegate;
-
--(void)cancelImagePicker;
-
-@end
-
-@protocol ELCImagePickerControllerDelegate
+@protocol ELCImagePickerControllerDelegate <UINavigationControllerDelegate>
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info;
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker;
+
+@end
+
+@interface ELCImagePickerController : UINavigationController <ELCAssetSelectionDelegate>
+
+@property (nonatomic, assign) id<ELCImagePickerControllerDelegate> delegate;
+
+- (void)cancelImagePicker;
 
 @end
 

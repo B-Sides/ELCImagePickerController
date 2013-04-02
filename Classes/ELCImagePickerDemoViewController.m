@@ -12,6 +12,12 @@
 #import "ELCAlbumPickerController.h"
 #import "ELCAssetTablePicker.h"
 
+@interface ELCImagePickerDemoViewController ()
+
+@property (nonatomic, retain) ALAssetsLibrary *specialLibrary;
+
+@end
+
 @implementation ELCImagePickerDemoViewController
 
 @synthesize scrollView = _scrollView;
@@ -38,8 +44,10 @@
 - (IBAction)launchSpecialController
 {
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    self.specialLibrary = library;
+    [library release];
     NSMutableArray *groups = [NSMutableArray array];
-    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+    [_specialLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         if (group) {
             [groups addObject:group];
         } else {
@@ -156,6 +164,7 @@
 
 - (void)dealloc
 {
+    [_specialLibrary release];
     [_scrollView release];
     [super dealloc];
 }

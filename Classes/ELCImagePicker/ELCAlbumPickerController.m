@@ -9,14 +9,23 @@
 #import "ELCImagePickerController.h"
 #import "ELCAssetTablePicker.h"
 
+@interface ELCAlbumPickerController ()
+
+@property (nonatomic, retain) ALAssetsLibrary *library;
+
+@end
+
 @implementation ELCAlbumPickerController
 
-@synthesize parent, assetGroups;
+@synthesize parent = _parent;
+@synthesize assetGroups = _assetGroups;
+@synthesize library = _library;
 
 #pragma mark -
 #pragma mark View lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 	
 	[self.navigationItem setTitle:@"Loading..."];
@@ -29,7 +38,9 @@
 	self.assetGroups = tempArray;
     [tempArray release];
     
-    library = [[ALAssetsLibrary alloc] init];      
+    ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
+    self.library = assetLibrary;
+    [assetLibrary release];
 
     // Load Albums into assetGroups
     dispatch_async(dispatch_get_main_queue(), ^
@@ -70,7 +81,7 @@
         };	
                 
         // Enumerate Albums
-        [library enumerateGroupsWithTypes:ALAssetsGroupAll
+        [self.library enumerateGroupsWithTypes:ALAssetsGroupAll
                                usingBlock:assetGroupEnumerator 
                              failureBlock:assetGroupEnumberatorFailure];
         
@@ -78,15 +89,15 @@
     });    
 }
 
--(void)reloadTableView {
-	
+- (void)reloadTableView
+{
 	[self.tableView reloadData];
 	[self.navigationItem setTitle:@"Select an Album"];
 }
 
--(void)selectedAssets:(NSArray*)_assets {
-	
-	[parent selectedAssets:_assets];
+- (void)selectedAssets:(NSArray*)assets
+{
+	[_parent selectedAssets:assets];
 }
 
 #pragma mark -
@@ -100,7 +111,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [assetGroups count];
+    return [self.assetGroups count];
 }
 
 
@@ -115,12 +126,12 @@
     }
     
     // Get count
-    ALAssetsGroup *g = (ALAssetsGroup*)[assetGroups objectAtIndex:indexPath.row];
+    ALAssetsGroup *g = (ALAssetsGroup*)[self.assetGroups objectAtIndex:indexPath.row];
     [g setAssetsFilter:[ALAssetsFilter allPhotos]];
     NSInteger gCount = [g numberOfAssets];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%d)",[g valueForProperty:ALAssetsGroupPropertyName], gCount];
-    [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup*)[assetGroups objectAtIndex:indexPath.row] posterImage]]];
+    [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup*)[self.assetGroups objectAtIndex:indexPath.row] posterImage]]];
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	
     return cell;
@@ -135,7 +146,7 @@
 	picker.parent = self;
 
     // Move me    
-    picker.assetGroup = [assetGroups objectAtIndex:indexPath.row];
+    picker.assetGroup = [self.assetGroups objectAtIndex:indexPath.row];
     [picker.assetGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
     
 	[self.navigationController pushViewController:picker animated:YES];
@@ -165,8 +176,8 @@
 
 - (void)dealloc 
 {	
-    [assetGroups release];
-    [library release];
+    [_assetGroups release];
+    [_library release];
     [super dealloc];
 }
 
