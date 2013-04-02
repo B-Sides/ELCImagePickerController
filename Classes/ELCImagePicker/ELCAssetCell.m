@@ -11,8 +11,8 @@
 @interface ELCAssetCell ()
 
 @property (nonatomic, retain) NSArray *rowAssets;
-@property (nonatomic, retain) NSArray *imageViewArray;
-@property (nonatomic, retain) NSArray *overlayViewArray;
+@property (nonatomic, retain) NSMutableArray *imageViewArray;
+@property (nonatomic, retain) NSMutableArray *overlayViewArray;
 
 @end
 
@@ -28,32 +28,15 @@
         [self addGestureRecognizer:tapRecognizer];
         [tapRecognizer release];
         
-		self.rowAssets = assets;
         NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithCapacity:4];
-        UIImage *overlayImage = [UIImage imageNamed:@"Overlay.png"];
-        NSMutableArray *overlayArray = [[NSMutableArray alloc] initWithCapacity:4];
-        for (int i = 0; i < 4; ++i) {
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-            BOOL selected = NO;
-            if (i < [_rowAssets count]) {
-                ELCAsset *asset = [_rowAssets objectAtIndex:i];
-                imageView.image = [UIImage imageWithCGImage:asset.asset.thumbnail];
-                selected = asset.selected;
-            } else {
-                imageView.image = nil;
-            }
-            [mutableArray addObject:imageView];
-            [imageView release];
-            
-            UIImageView *overlayImageView = [[UIImageView alloc] initWithImage:overlayImage];
-            [overlayArray addObject:overlayImageView];
-            overlayImageView.hidden = selected ? NO : YES;
-            [overlayImageView release];
-        }
         self.imageViewArray = mutableArray;
         [mutableArray release];
+        
+        NSMutableArray *overlayArray = [[NSMutableArray alloc] initWithCapacity:4];
         self.overlayViewArray = overlayArray;
         [overlayArray release];
+
+        [self setAssets:assets];
 	}
 	return self;
 }
@@ -64,16 +47,32 @@
 	for (UIView *view in [self subviews]) {
 		[view removeFromSuperview];
 	}
-    for (int i = 0; i < 4; ++i) {
-        UIImageView *imageView = [_imageViewArray objectAtIndex:i];
-        UIImageView *overlayView = [_overlayViewArray objectAtIndex:i];
-        if (i < [_rowAssets count]) {
-            ELCAsset *asset = [_rowAssets objectAtIndex:i];
+    //set up a pointer here so we don't keep calling [UIImage imageNamed:] if creating overlays
+    UIImage *overlayImage = nil;
+    for (int i = 0; i < [_rowAssets count]; ++i) {
+
+        ELCAsset *asset = [_rowAssets objectAtIndex:i];
+
+        if (i < [_imageViewArray count]) {
+            UIImageView *imageView = [_imageViewArray objectAtIndex:i];
             imageView.image = [UIImage imageWithCGImage:asset.asset.thumbnail];
+        } else {
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:asset.asset.thumbnail]];
+            [_imageViewArray addObject:imageView];
+            [imageView release];
+        }
+        
+        if (i < [_overlayViewArray count]) {
+            UIImageView *overlayView = [_overlayViewArray objectAtIndex:i];
             overlayView.hidden = asset.selected ? NO : YES;
         } else {
-            imageView.image = nil;
-            overlayView.hidden = YES;
+            if (overlayImage == nil) {
+                overlayImage = [UIImage imageNamed:@"Overlay.png"];
+            }
+            UIImageView *overlayView = [[UIImageView alloc] initWithImage:overlayImage];
+            [_overlayViewArray addObject:overlayView];
+            overlayView.hidden = asset.selected ? NO : YES;
+            [overlayView release];
         }
     }
 }
@@ -86,7 +85,7 @@
     
 	CGRect frame = CGRectMake(startX, 2, 75, 75);
 	
-	for (int i = 0; i < 4; ++i) {
+	for (int i = 0; i < [_rowAssets count]; ++i) {
         if (CGRectContainsPoint(frame, point)) {
             ELCAsset *asset = [_rowAssets objectAtIndex:i];
             asset.selected = !asset.selected;
@@ -105,7 +104,7 @@
     
 	CGRect frame = CGRectMake(startX, 2, 75, 75);
 	
-	for (int i = 0; i < 4; ++i) {
+	for (int i = 0; i < [_rowAssets count]; ++i) {
 		UIImageView *imageView = [_imageViewArray objectAtIndex:i];
 		[imageView setFrame:frame];
 		[self addSubview:imageView];
