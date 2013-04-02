@@ -11,16 +11,6 @@
 #import "ELCAssetSelectionDelegate.h"
 
 @interface ELCAssetTablePicker : UITableViewController <ELCAssetDelegate>
-{
-	ALAssetsGroup *assetGroup;
-	
-	NSMutableArray *elcAssets;
-	int selectedAssets;
-	
-	id parent;
-	
-	NSOperationQueue *queue;
-}
 
 @property (nonatomic, assign) id <ELCAssetSelectionDelegate> parent;
 @property (nonatomic, retain) ALAssetsGroup *assetGroup;
@@ -29,10 +19,10 @@
 @property (nonatomic, assign) BOOL singleSelection;
 @property (nonatomic, assign) BOOL immediateReturn;
 
--(int)totalSelectedAssets;
--(void)preparePhotos;
+- (int)totalSelectedAssets;
+- (void)preparePhotos;
 
--(void)doneAction:(id)sender;
+- (void)doneAction:(id)sender;
 
 - (void)assetSelected:(ELCAsset *)asset;
 

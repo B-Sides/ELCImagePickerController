@@ -50,8 +50,7 @@
         // Group enumerator Block
         void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) 
         {
-            if (group == nil) 
-            {
+            if (group == nil) {
                 return;
             }
             
@@ -145,7 +144,6 @@
 	ELCAssetTablePicker *picker = [[ELCAssetTablePicker alloc] initWithNibName:@"ELCAssetTablePicker" bundle:[NSBundle mainBundle]];
 	picker.parent = self;
 
-    // Move me    
     picker.assetGroup = [self.assetGroups objectAtIndex:indexPath.row];
     [picker.assetGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
     

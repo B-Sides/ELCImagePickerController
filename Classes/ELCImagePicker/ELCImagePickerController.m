@@ -42,18 +42,12 @@
 		[returnArray addObject:workingDictionary];
 		
 		[workingDictionary release];	
-	}
-	
-    [self popToRootViewControllerAnimated:NO];
-//    if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]){
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//    } else {
-//        [self dismissModalViewControllerAnimated:YES];
-//    }
-    
-	if([_myDelegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
+	}    
+	if(_myDelegate != nil && [_myDelegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
 		[_myDelegate performSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:) withObject:self withObject:[NSArray arrayWithArray:returnArray]];
-	}
+	} else {
+        [self popToRootViewControllerAnimated:NO];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation

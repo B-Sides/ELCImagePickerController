@@ -10,6 +10,6 @@
 
 @protocol ELCAssetSelectionDelegate <NSObject>
 
--(void)selectedAssets:(NSArray*)_assets;
+- (void)selectedAssets:(NSArray *)assets;
 
 @end

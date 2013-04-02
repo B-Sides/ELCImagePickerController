@@ -12,7 +12,6 @@
 		1A2C100717026CF0004FAFA0 /* ELCAlbumPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C0FFE17026CF0004FAFA0 /* ELCAlbumPickerController.m */; };
 		1A2C100817026CF0004FAFA0 /* ELCAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C100017026CF0004FAFA0 /* ELCAsset.m */; };
 		1A2C100917026CF0004FAFA0 /* ELCAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A2C100117026CF0004FAFA0 /* ELCAssetCell.m */; };
-		1A2C100A17026CF0004FAFA0 /* ELCImagePickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A2C100417026CF0004FAFA0 /* ELCImagePickerController.xib */; };
 		1D3623260D0F684500981E51 /* ELCImagePickerDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* ELCImagePickerDemoAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -38,7 +37,6 @@
 		1A2C100117026CF0004FAFA0 /* ELCAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCAssetCell.m; sourceTree = "<group>"; };
 		1A2C100217026CF0004FAFA0 /* ELCImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerController.h; sourceTree = "<group>"; };
 		1A2C100317026CF0004FAFA0 /* ELCAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetCell.h; sourceTree = "<group>"; };
-		1A2C100417026CF0004FAFA0 /* ELCImagePickerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELCImagePickerController.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* ELCImagePickerDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerDemoAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* ELCImagePickerDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerDemoAppDelegate.m; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 				1A2C0FFB17026CF0004FAFA0 /* ELCAssetTablePicker.m */,
 				1A2C100217026CF0004FAFA0 /* ELCImagePickerController.h */,
 				1A2C0FFC17026CF0004FAFA0 /* ELCImagePickerController.m */,
-				1A2C100417026CF0004FAFA0 /* ELCImagePickerController.xib */,
 			);
 			path = ELCImagePicker;
 			sourceTree = "<group>";
@@ -223,7 +220,6 @@
 				83C6BC9714476B280064D71D /* elc-ios-icon@2x.png in Resources */,
 				83C6BC9814476B280064D71D /* elc-ios-icon.png in Resources */,
 				230644BC15F8C0BB007679C7 /* MainWindow-iPad.xib in Resources */,
-				1A2C100A17026CF0004FAFA0 /* ELCImagePickerController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +248,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: James Van Metre (7VUPDUJ589)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -260,6 +257,7 @@
 				INFOPLIST_FILE = "ELCImagePickerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = ELCImagePickerDemo;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "90EBAE05-2878-495B-87EF-87A043338D39";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;

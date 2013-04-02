@@ -43,9 +43,6 @@
     }
 
 	[self performSelectorInBackground:@selector(preparePhotos) withObject:nil];
-    
-    // Show partial while full list loads
-    //	[self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:.5];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -197,6 +194,7 @@
 
 - (void)dealloc 
 {
+    [_assetGroup release];    
     [_elcAssets release];
     [_selectedAssetsLabel release];
     [super dealloc];    
