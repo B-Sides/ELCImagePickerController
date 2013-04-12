@@ -25,7 +25,7 @@
 
 - (IBAction)launchController
 {	
-    ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName:@"ELCAlbumPickerController" bundle:[NSBundle mainBundle]];    
+    ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName: nil bundle: nil];
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
     [albumController setParent:elcPicker];
 	[elcPicker setDelegate:self];
@@ -68,7 +68,7 @@
 
 - (void)displayPickerForGroup:(ALAssetsGroup *)group
 {
-	ELCAssetTablePicker *tablePicker = [[ELCAssetTablePicker alloc] initWithNibName:@"ELCAssetTablePicker" bundle:[NSBundle mainBundle]];
+	ELCAssetTablePicker *tablePicker = [[ELCAssetTablePicker alloc] initWithNibName: nil bundle: nil];
     tablePicker.singleSelection = YES;
     tablePicker.immediateReturn = YES;
     
