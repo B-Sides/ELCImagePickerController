@@ -1,24 +1,42 @@
-****** HOW TO USE ******
+# ELCImagePickerController
 
-The image picker is created and displayed in a very similar manner to the UIImagePickerController. The sample application  shows its use. To display the controller you instantiate it and display it modally like so.
+*A clone of the UIImagePickerController using the Assets Library Framework allowing for multiple asset selection.*
 
-ELCImagePickerController *controller = [[ELCImagePickerController alloc] initImagePicker];
-[controller setDelegate:self];
-[self presentModalViewController:controller animated:YES];
-[controller release];
+## Usage
 
-The ELCImagePickerController will return the select images back to the ELCImagePickerControllerDelegate. The delegate contains to methods very similar to the UIImagePickerControllerDelegate. Instead of returning one dictionary representing a single image the controller sends back an array of similarly structured dictionaries. The two delegate methods are:
+The image picker is created and displayed in a very similar manner to the `UIImagePickerController`. The sample application  shows its use. To display the controller you instantiate it and display it modally like so.
 
+```obj-c
+// Create the an album controller and image picker
+ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] init];
+ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
+[albumController setParent:imagePicker];
+[imagePicker setDelegate:self];
+
+// Present modally
+[self presentViewController:imagePicker
+                       animated:YES
+                     completion:nil];
+                     
+// Release if not using ARC
+[imagePicker release];
+[albumController release];
+```
+
+The `ELCImagePickerController` will return the select images back to the `ELCImagePickerControllerDelegate`. The delegate contains to methods very similar to the `UIImagePickerControllerDelegate`. Instead of returning one dictionary representing a single image the controller sends back an array of similarly structured dictionaries. The two delegate methods are:
+
+```obj-c
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info;
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker;
+```
 
-*-*-*-*-* ABOUT THIS HERE FORK *-*-*-*-*
+## ABOUT THIS HERE FORK
 
 The image tableview in this fork allows for some customization, including limiting
 to just one photo album, limiting to single image selection, and automatically
 scrolling to the bottom. See the demo viewcontroller for example usage.
 
-
+## License
 
 The MIT License
 
