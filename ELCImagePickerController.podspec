@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
     s.homepage = 'https://github.com/elc/ELCImagePickerController'
     s.license = {
       :type => 'MIT',
-      :file => 'README'
+      :file => 'README.md'
     }
     s.author = {'ELC Technologies' => 'http://elctech.com'}
     s.source = {:git => 'https://github.com/elc/ELCImagePickerController.git',
