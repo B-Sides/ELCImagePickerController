@@ -45,7 +45,9 @@
 {
     self.rowAssets = assets;
 	for (UIView *view in [self subviews]) {
-		[view removeFromSuperview];
+        if ([view isKindOfClass:UIImageView.class]) {
+            [view removeFromSuperview];
+        }
 	}
     //set up a pointer here so we don't keep calling [UIImage imageNamed:] if creating overlays
     UIImage *overlayImage = nil;
