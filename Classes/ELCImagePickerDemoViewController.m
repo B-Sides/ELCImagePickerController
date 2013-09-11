@@ -31,11 +31,7 @@
 	[elcPicker setDelegate:self];
     
     ELCImagePickerDemoAppDelegate *app = (ELCImagePickerDemoAppDelegate *)[[UIApplication sharedApplication] delegate];
-    if ([app.viewController respondsToSelector:@selector(presentViewController:animated:completion:)]){
-        [app.viewController presentViewController:elcPicker animated:YES completion:nil];
-    } else {
-        [app.viewController presentModalViewController:elcPicker animated:YES];
-    }
+    [app.viewController presentViewController:elcPicker animated:YES completion:nil];
     
     [elcPicker release];
     [albumController release];
@@ -80,12 +76,8 @@
     tablePicker.assetGroup = group;
     [tablePicker.assetGroup setAssetsFilter:[ALAssetsFilter allAssets]];
     
-    if ([self respondsToSelector:@selector(presentViewController:animated:completion:)]){
-        [self presentViewController:elcPicker animated:YES completion:nil];
-    } else {
-        [self presentModalViewController:elcPicker animated:YES];
-    }
-	[tablePicker release];
+    [self presentViewController:elcPicker animated:YES completion:nil];
+    [tablePicker release];
     [elcPicker release];
 }
 
@@ -102,11 +94,7 @@
 
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
 {
-    if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]){
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 	
     for (UIView *v in [_scrollView subviews]) {
         [v removeFromSuperview];
@@ -140,11 +128,7 @@
 
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker
 {
-    if ([self respondsToSelector:@selector(dismissViewControllerAnimated:completion:)]){
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        [self dismissModalViewControllerAnimated:YES];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
