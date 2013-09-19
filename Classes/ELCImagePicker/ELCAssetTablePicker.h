@@ -9,6 +9,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "ELCAsset.h"
 #import "ELCAssetSelectionDelegate.h"
+#import "ELCAssetPickerFilterDelegate.h"
 
 @interface ELCAssetTablePicker : UITableViewController <ELCAssetDelegate>
 
@@ -18,6 +19,9 @@
 @property (nonatomic, retain) IBOutlet UILabel *selectedAssetsLabel;
 @property (nonatomic, assign) BOOL singleSelection;
 @property (nonatomic, assign) BOOL immediateReturn;
+
+// optional, can be used to filter the assets displayed
+@property(nonatomic, assign) id<ELCAssetPickerFilterDelegate> assetPickerFilterDelegate;
 
 - (int)totalSelectedAssets;
 - (void)preparePhotos;

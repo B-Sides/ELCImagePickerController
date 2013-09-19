@@ -147,6 +147,8 @@
     picker.assetGroup = [self.assetGroups objectAtIndex:indexPath.row];
     [picker.assetGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
     
+	picker.assetPickerFilterDelegate = self.assetPickerFilterDelegate;
+	
 	[self.navigationController pushViewController:picker animated:YES];
 	[picker release];
 }
