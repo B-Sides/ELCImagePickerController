@@ -76,7 +76,18 @@
 
         ELCAsset *elcAsset = [[ELCAsset alloc] initWithAsset:result];
         [elcAsset setParent:self];
-        [self.elcAssets addObject:elcAsset];
+        
+        BOOL isAssetFiltered = NO;
+        if (self.assetPickerFilterDelegate &&
+           [self.assetPickerFilterDelegate respondsToSelector:@selector(assetTablePicker:isAssetFilteredOut:)])
+        {
+	        isAssetFiltered = [self.assetPickerFilterDelegate assetTablePicker:self isAssetFilteredOut:(ELCAsset*)elcAsset];
+        }
+
+        if (!isAssetFiltered) {
+	        [self.elcAssets addObject:elcAsset];
+        }
+        
         [elcAsset release];
      }];
     NSLog(@"done enumerating photos");

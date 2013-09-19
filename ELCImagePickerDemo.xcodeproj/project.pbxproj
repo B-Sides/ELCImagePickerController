@@ -60,6 +60,7 @@
 		83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon@2x.png"; sourceTree = "<group>"; };
 		83C6BC9614476B280064D71D /* elc-ios-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ELCImagePickerDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ELCImagePickerDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A58058B417EB865B0078600C /* ELCAssetPickerFilterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCAssetPickerFilterDelegate.h; sourceTree = "<group>"; };
 		E29A5E3B1239C42A008BB149 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -164,6 +165,7 @@
 				1A2C100317026CF0004FAFA0 /* ELCAssetCell.h */,
 				1A2C100117026CF0004FAFA0 /* ELCAssetCell.m */,
 				230644B815F8A5A6007679C7 /* ELCAssetSelectionDelegate.h */,
+				A58058B417EB865B0078600C /* ELCAssetPickerFilterDelegate.h */,
 				1A2C0FFA17026CF0004FAFA0 /* ELCAssetTablePicker.h */,
 				1A2C0FFB17026CF0004FAFA0 /* ELCAssetTablePicker.m */,
 				1A2C100217026CF0004FAFA0 /* ELCImagePickerController.h */,
