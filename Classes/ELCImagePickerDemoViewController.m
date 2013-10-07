@@ -27,6 +27,7 @@
 {	
     ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName: nil bundle: nil];
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
+    elcPicker.maximumImagesCount = 4;
     [albumController setParent:elcPicker];
 	[elcPicker setDelegate:self];
     

@@ -127,6 +127,19 @@
     [self.parent selectedAssets:selectedAssetsImages];
 }
 
+
+- (BOOL)shouldSelectAsset:(ELCAsset *)asset {
+    NSUInteger selectionCount = 0;
+    for (ELCAsset *elcAsset in self.elcAssets) {
+        if (elcAsset.selected) selectionCount++;
+    }
+    BOOL shouldSelect = YES;
+    if ([self.parent respondsToSelector:@selector(shouldSelectAsset:previousCount:)]) {
+        shouldSelect = [self.parent shouldSelectAsset:asset previousCount:selectionCount];
+    }
+    return shouldSelect;
+}
+
 - (void)assetSelected:(id)asset
 {
     if (self.singleSelection) {

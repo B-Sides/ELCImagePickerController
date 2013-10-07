@@ -21,6 +21,7 @@
 @interface ELCImagePickerController : UINavigationController <ELCAssetSelectionDelegate>
 
 @property (nonatomic, assign) id<ELCImagePickerControllerDelegate> delegate;
+@property (nonatomic, assign) NSInteger maximumImagesCount;
 
 - (void)cancelImagePicker;
 

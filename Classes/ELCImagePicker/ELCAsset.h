@@ -14,7 +14,7 @@
 
 @optional
 - (void)assetSelected:(ELCAsset *)asset;
-
+- (BOOL)shouldSelectAsset:(ELCAsset *)asset;
 @end
 
 @interface ELCAsset : NSObject

@@ -94,6 +94,10 @@
 	[self.navigationItem setTitle:@"Select an Album"];
 }
 
+- (BOOL)shouldSelectAsset:(ELCAsset *)asset previousCount:(NSUInteger)previousCount {
+    return [self.parent shouldSelectAsset:asset previousCount:previousCount];
+}
+
 - (void)selectedAssets:(NSArray*)assets
 {
 	[_parent selectedAssets:assets];
