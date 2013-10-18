@@ -49,7 +49,7 @@
         
         CGImageRef imgRef = [assetRep fullScreenImage];
         UIImage *img = [UIImage imageWithCGImage:imgRef
-                                           scale:[UIScreen mainScreen].scale
+                                           scale:1.0f
                                      orientation:(UIImageOrientation)assetRep.orientation];
         [workingDictionary setObject:img forKey:@"UIImagePickerControllerOriginalImage"];
 		[workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:@"UIImagePickerControllerReferenceURL"];
