@@ -43,12 +43,13 @@
 	NSMutableArray *returnArray = [[[NSMutableArray alloc] init] autorelease];
 	
 	for(ALAsset *asset in assets) {
+		NSMutableDictionary *workingDictionary = [[NSMutableDictionary alloc] init];
+		
 		CLLocation* wgs84Location = [asset valueForProperty:ALAssetPropertyLocation];
 		if (wgs84Location) {
 			[workingDictionary setObject:wgs84Location forKey:ALAssetPropertyLocation];
 		}
     
-		NSMutableDictionary *workingDictionary = [[NSMutableDictionary alloc] init];
 		[workingDictionary setObject:[asset valueForProperty:ALAssetPropertyType] forKey:@"UIImagePickerControllerMediaType"];
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
         
