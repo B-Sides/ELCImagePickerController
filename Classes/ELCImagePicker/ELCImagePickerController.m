@@ -11,6 +11,7 @@
 #import "ELCAssetCell.h"
 #import "ELCAssetTablePicker.h"
 #import "ELCAlbumPickerController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation ELCImagePickerController
 
@@ -42,7 +43,11 @@
 	NSMutableArray *returnArray = [[[NSMutableArray alloc] init] autorelease];
 	
 	for(ALAsset *asset in assets) {
-
+		CLLocation* wgs84Location = [asset valueForProperty:ALAssetPropertyLocation];
+		if (wgs84Location) {
+			[workingDictionary setObject:wgs84Location forKey:ALAssetPropertyLocation];
+		}
+    
 		NSMutableDictionary *workingDictionary = [[NSMutableDictionary alloc] init];
 		[workingDictionary setObject:[asset valueForProperty:ALAssetPropertyType] forKey:@"UIImagePickerControllerMediaType"];
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
