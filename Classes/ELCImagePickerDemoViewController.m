@@ -70,6 +70,7 @@
     tablePicker.immediateReturn = YES;
     
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:tablePicker];
+    elcPicker.maximumImagesCount = 1;
     elcPicker.delegate = self;
 	tablePicker.parent = elcPicker;
     
