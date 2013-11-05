@@ -43,6 +43,10 @@
 	NSMutableArray *returnArray = [[[NSMutableArray alloc] init] autorelease];
 	
 	for(ALAsset *asset in assets) {
+		id obj = [asset valueForProperty:ALAssetPropertyType];
+		if (!obj) {
+			continue;
+		}
 		NSMutableDictionary *workingDictionary = [[NSMutableDictionary alloc] init];
 		
 		CLLocation* wgs84Location = [asset valueForProperty:ALAssetPropertyLocation];
@@ -50,7 +54,7 @@
 			[workingDictionary setObject:wgs84Location forKey:ALAssetPropertyLocation];
 		}
     
-		[workingDictionary setObject:[asset valueForProperty:ALAssetPropertyType] forKey:@"UIImagePickerControllerMediaType"];
+		[workingDictionary setObject:obj forKey:@"UIImagePickerControllerMediaType"];
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
         
         CGImageRef imgRef = [assetRep fullScreenImage];
