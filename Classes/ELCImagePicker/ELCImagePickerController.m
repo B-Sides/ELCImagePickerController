@@ -15,16 +15,29 @@
 
 @implementation ELCImagePickerController
 
-@synthesize delegate = _myDelegate;
+//Using auto synthesizers
+
+- (id)init
+{
+    ELCAlbumPickerController *albumPicker = [[ELCAlbumPickerController alloc] initWithStyle:UITableViewStylePlain];
+    
+    self = [super initWithRootViewController:albumPicker];
+    if (self) {
+        self.maximumImagesCount = 4;
+        [albumPicker setParent:self];
+    }
+    return self;
+}
 
 - (void)cancelImagePicker
 {
-	if([_myDelegate respondsToSelector:@selector(elcImagePickerControllerDidCancel:)]) {
-		[_myDelegate performSelector:@selector(elcImagePickerControllerDidCancel:) withObject:self];
+	if ([_imagePickerDelegate respondsToSelector:@selector(elcImagePickerControllerDidCancel:)]) {
+		[_imagePickerDelegate performSelector:@selector(elcImagePickerControllerDidCancel:) withObject:self];
 	}
 }
 
-- (BOOL)shouldSelectAsset:(ELCAsset *)asset previousCount:(NSUInteger)previousCount {
+- (BOOL)shouldSelectAsset:(ELCAsset *)asset previousCount:(NSUInteger)previousCount
+{
     BOOL shouldSelect = previousCount < self.maximumImagesCount;
     if (!shouldSelect) {
         NSString *title = [NSString stringWithFormat:NSLocalizedString(@"Only %d photos please!", nil), self.maximumImagesCount];
@@ -40,7 +53,7 @@
 
 - (void)selectedAssets:(NSArray *)assets
 {
-	NSMutableArray *returnArray = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *returnArray = [[NSMutableArray alloc] init];
 	
 	for(ALAsset *asset in assets) {
 		id obj = [asset valueForProperty:ALAssetPropertyType];
@@ -53,23 +66,25 @@
 		if (wgs84Location) {
 			[workingDictionary setObject:wgs84Location forKey:ALAssetPropertyLocation];
 		}
-    
-		[workingDictionary setObject:obj forKey:@"UIImagePickerControllerMediaType"];
+        
+        [workingDictionary setObject:obj forKey:UIImagePickerControllerMediaType];
+
+        //defaultRepresentation returns image as it appears in photo picker, rotated and sized,
+        //so use UIImageOrientationUp when creating our image below.
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
         
         CGImageRef imgRef = [assetRep fullScreenImage];
         UIImage *img = [UIImage imageWithCGImage:imgRef
                                            scale:1.0f
-                                     orientation:(UIImageOrientation)assetRep.orientation];
-        [workingDictionary setObject:img forKey:@"UIImagePickerControllerOriginalImage"];
-		[workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:@"UIImagePickerControllerReferenceURL"];
+                                     orientation:UIImageOrientationUp];
+        [workingDictionary setObject:img forKey:UIImagePickerControllerOriginalImage];
+		[workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
 		
 		[returnArray addObject:workingDictionary];
 		
-		[workingDictionary release];	
 	}    
-	if(_myDelegate != nil && [_myDelegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
-		[_myDelegate performSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:) withObject:self withObject:[NSArray arrayWithArray:returnArray]];
+	if (_imagePickerDelegate != nil && [_imagePickerDelegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
+		[_imagePickerDelegate performSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:) withObject:self withObject:returnArray];
 	} else {
         [self popToRootViewControllerAnimated:NO];
     }
@@ -82,27 +97,6 @@
     } else {
         return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
     }
-}
-
-#pragma mark -
-#pragma mark Memory management
-
-- (void)didReceiveMemoryWarning
-{
-    NSLog(@"ELC Image Picker received memory warning.");
-    
-    [super didReceiveMemoryWarning];
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-}
-
-
-- (void)dealloc
-{
-    NSLog(@"deallocing ELCImagePickerController");
-    [super dealloc];
 }
 
 @end

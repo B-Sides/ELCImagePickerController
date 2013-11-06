@@ -7,34 +7,28 @@
 The image picker is created and displayed in a very similar manner to the `UIImagePickerController`. The sample application  shows its use. To display the controller you instantiate it and display it modally like so.
 
 ```obj-c
-// Create the an album controller and image picker
-ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] init];
-ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
-[albumController setParent:imagePicker];
-[imagePicker setDelegate:self];
+// Create the image picker
+ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] init];
+imagePicker.maximumImagesCount = 4; //Set the maximum number of images to select, defaults to 4
+imagePicker.imagePickerDelegate = self;
 
-// Present modally
-[self presentViewController:imagePicker
-                       animated:YES
-                     completion:nil];
-                     
+//Present modally
+[self presentViewController:elcPicker animated:YES completion:nil];
+
 // Release if not using ARC
 [imagePicker release];
-[albumController release];
 ```
 
-The `ELCImagePickerController` will return the select images back to the `ELCImagePickerControllerDelegate`. The delegate contains to methods very similar to the `UIImagePickerControllerDelegate`. Instead of returning one dictionary representing a single image the controller sends back an array of similarly structured dictionaries. The two delegate methods are:
+The `ELCImagePickerController` will return the select images back to the `ELCImagePickerControllerDelegate`. The delegate contains methods very similar to the `UIImagePickerControllerDelegate`. Instead of returning one dictionary representing a single image the controller sends back an array of similarly structured dictionaries. The two delegate methods are:
 
 ```obj-c
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info;
 - (void)elcImagePickerControllerDidCancel:(ELCImagePickerController *)picker;
 ```
 
-## ABOUT THIS HERE FORK
-
-The image tableview in this fork allows for some customization, including limiting
-to just one photo album, limiting to single image selection, and automatically
-scrolling to the bottom. See the demo viewcontroller for example usage.
+The Image Picker allows for some customization, including limiting 
+    to just one photo album, limiting to single image selection, and automatically
+    scrolling to the bottom. See the demo viewcontroller for example usage.
 
 ## License
 

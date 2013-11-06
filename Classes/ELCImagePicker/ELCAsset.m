@@ -10,9 +10,7 @@
 
 @implementation ELCAsset
 
-@synthesize asset = _asset;
-@synthesize parent = _parent;
-@synthesize selected = _selected;
+//Using auto synthesizers
 
 - (id)initWithAsset:(ALAsset*)asset
 {
@@ -21,7 +19,6 @@
 		self.asset = asset;
         _selected = NO;
     }
-    
 	return self;	
 }
 
@@ -47,11 +44,6 @@
     }
 }
 
-- (void)dealloc 
-{    
-    [_asset release];
-    [super dealloc];
-}
 
 @end
 

@@ -12,8 +12,8 @@
 
 @interface ELCImagePickerDemoAppDelegate : NSObject <UIApplicationDelegate> 
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet ELCImagePickerDemoViewController *viewController;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet ELCImagePickerDemoViewController *viewController;
 
 @end
 

@@ -11,15 +11,13 @@
 
 @interface ELCAlbumPickerController ()
 
-@property (nonatomic, retain) ALAssetsLibrary *library;
+@property (nonatomic, strong) ALAssetsLibrary *library;
 
 @end
 
 @implementation ELCAlbumPickerController
 
-@synthesize parent = _parent;
-@synthesize assetGroups = _assetGroups;
-@synthesize library = _library;
+//Using auto synthesizers
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -32,59 +30,55 @@
 
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.parent action:@selector(cancelImagePicker)];
 	[self.navigationItem setRightBarButtonItem:cancelButton];
-	[cancelButton release];
 
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
 	self.assetGroups = tempArray;
-    [tempArray release];
     
     ALAssetsLibrary *assetLibrary = [[ALAssetsLibrary alloc] init];
     self.library = assetLibrary;
-    [assetLibrary release];
 
     // Load Albums into assetGroups
     dispatch_async(dispatch_get_main_queue(), ^
     {
-        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+        @autoreleasepool {
         
         // Group enumerator Block
-        void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) 
-        {
-            if (group == nil) {
-                return;
-            }
-            
-            // added fix for camera albums order
-            NSString *sGroupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
-            NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
-            
-            if ([[sGroupPropertyName lowercaseString] isEqualToString:@"camera roll"] && nType == ALAssetsGroupSavedPhotos) {
-                [self.assetGroups insertObject:group atIndex:0];
-            }
-            else {
-                [self.assetGroups addObject:group];
-            }
-
-            // Reload albums
-            [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
-        };
-        
-        // Group Enumerator Failure Block
-        void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
-            
-            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-            
-            NSLog(@"A problem occured %@", [error description]);	                                 
-        };	
+            void (^assetGroupEnumerator)(ALAssetsGroup *, BOOL *) = ^(ALAssetsGroup *group, BOOL *stop) 
+            {
+                if (group == nil) {
+                    return;
+                }
                 
-        // Enumerate Albums
-        [self.library enumerateGroupsWithTypes:ALAssetsGroupAll
-                               usingBlock:assetGroupEnumerator 
-                             failureBlock:assetGroupEnumberatorFailure];
+                // added fix for camera albums order
+                NSString *sGroupPropertyName = (NSString *)[group valueForProperty:ALAssetsGroupPropertyName];
+                NSUInteger nType = [[group valueForProperty:ALAssetsGroupPropertyType] intValue];
+                
+                if ([[sGroupPropertyName lowercaseString] isEqualToString:@"camera roll"] && nType == ALAssetsGroupSavedPhotos) {
+                    [self.assetGroups insertObject:group atIndex:0];
+                }
+                else {
+                    [self.assetGroups addObject:group];
+                }
+
+                // Reload albums
+                [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
+            };
+            
+            // Group Enumerator Failure Block
+            void (^assetGroupEnumberatorFailure)(NSError *) = ^(NSError *error) {
+                
+                UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                [alert show];
+                
+                NSLog(@"A problem occured %@", [error description]);	                                 
+            };	
+                    
+            // Enumerate Albums
+            [self.library enumerateGroupsWithTypes:ALAssetsGroupAll
+                                   usingBlock:assetGroupEnumerator 
+                                 failureBlock:assetGroupEnumberatorFailure];
         
-        [pool release];
+        }
     });    
 }
 
@@ -94,7 +88,8 @@
 	[self.navigationItem setTitle:@"Select an Album"];
 }
 
-- (BOOL)shouldSelectAsset:(ELCAsset *)asset previousCount:(NSUInteger)previousCount {
+- (BOOL)shouldSelectAsset:(ELCAsset *)asset previousCount:(NSUInteger)previousCount
+{
     return [self.parent shouldSelectAsset:asset previousCount:previousCount];
 }
 
@@ -106,26 +101,28 @@
 #pragma mark -
 #pragma mark Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     // Return the number of sections.
     return 1;
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     // Return the number of rows in the section.
     return [self.assetGroups count];
 }
 
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Get count
@@ -143,8 +140,8 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	ELCAssetTablePicker *picker = [[ELCAssetTablePicker alloc] initWithNibName: nil bundle: nil];
 	picker.parent = self;
 
@@ -154,35 +151,11 @@
 	picker.assetPickerFilterDelegate = self.assetPickerFilterDelegate;
 	
 	[self.navigationController pushViewController:picker animated:YES];
-	[picker release];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 	return 57;
-}
-
-#pragma mark -
-#pragma mark Memory management
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
-}
-
-
-- (void)dealloc 
-{	
-    [_assetGroups release];
-    [_library release];
-    [super dealloc];
 }
 
 @end

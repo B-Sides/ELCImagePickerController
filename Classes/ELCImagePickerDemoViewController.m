@@ -14,35 +14,28 @@
 
 @interface ELCImagePickerDemoViewController ()
 
-@property (nonatomic, retain) ALAssetsLibrary *specialLibrary;
+@property (nonatomic, strong) ALAssetsLibrary *specialLibrary;
 
 @end
 
 @implementation ELCImagePickerDemoViewController
 
-@synthesize scrollView = _scrollView;
-@synthesize chosenImages = _chosenImages;
+//Using generated synthesizers
 
 - (IBAction)launchController
-{	
-    ELCAlbumPickerController *albumController = [[ELCAlbumPickerController alloc] initWithNibName: nil bundle: nil];
-	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:albumController];
+{
+	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] init];
     elcPicker.maximumImagesCount = 4;
-    [albumController setParent:elcPicker];
-	[elcPicker setDelegate:self];
+	elcPicker.imagePickerDelegate = self;
     
-    ELCImagePickerDemoAppDelegate *app = (ELCImagePickerDemoAppDelegate *)[[UIApplication sharedApplication] delegate];
-    [app.viewController presentViewController:elcPicker animated:YES completion:nil];
+    [self presentViewController:elcPicker animated:YES completion:nil];
     
-    [elcPicker release];
-    [albumController release];
 }
 
 - (IBAction)launchSpecialController
 {
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     self.specialLibrary = library;
-    [library release];
     NSMutableArray *groups = [NSMutableArray array];
     [_specialLibrary enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         if (group) {
@@ -55,7 +48,6 @@
         self.chosenImages = nil;
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"Album Error: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [alert show];
-        [alert release];
         
         NSLog(@"A problem occured %@", [error description]);
         // an error here means that the asset groups were inaccessable.
@@ -65,13 +57,13 @@
 
 - (void)displayPickerForGroup:(ALAssetsGroup *)group
 {
-	ELCAssetTablePicker *tablePicker = [[ELCAssetTablePicker alloc] initWithNibName: nil bundle: nil];
+	ELCAssetTablePicker *tablePicker = [[ELCAssetTablePicker alloc] initWithStyle:UITableViewStylePlain];
     tablePicker.singleSelection = YES;
     tablePicker.immediateReturn = YES;
     
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initWithRootViewController:tablePicker];
     elcPicker.maximumImagesCount = 1;
-    elcPicker.delegate = self;
+    elcPicker.imagePickerDelegate = self;
 	tablePicker.parent = elcPicker;
     
     // Move me
@@ -79,8 +71,6 @@
     [tablePicker.assetGroup setAssetsFilter:[ALAssetsFilter allAssets]];
     
     [self presentViewController:elcPicker animated:YES completion:nil];
-    [tablePicker release];
-    [elcPicker release];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -107,7 +97,7 @@
     
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];
 	
-	for(NSDictionary *dict in info) {
+	for (NSDictionary *dict in info) {
 	
         UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
         [images addObject:image];
@@ -117,7 +107,6 @@
 		imageview.frame = workingFrame;
 		
 		[_scrollView addSubview:imageview];
-		[imageview release];
 		
 		workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
 	}
@@ -133,26 +122,5 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload
-{
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
-
-- (void)dealloc
-{
-    [_specialLibrary release];
-    [_scrollView release];
-    [super dealloc];
-}
 
 @end

@@ -10,33 +10,28 @@
 
 @interface ELCAssetCell ()
 
-@property (nonatomic, retain) NSArray *rowAssets;
-@property (nonatomic, retain) NSMutableArray *imageViewArray;
-@property (nonatomic, retain) NSMutableArray *overlayViewArray;
+@property (nonatomic, strong) NSArray *rowAssets;
+@property (nonatomic, strong) NSMutableArray *imageViewArray;
+@property (nonatomic, strong) NSMutableArray *overlayViewArray;
 
 @end
 
 @implementation ELCAssetCell
 
-@synthesize rowAssets = _rowAssets;
+//Using auto synthesizers
 
-- (id)initWithAssets:(NSArray *)assets reuseIdentifier:(NSString *)identifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-	if(self) {
+    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+	if (self) {
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cellTapped:)];
         [self addGestureRecognizer:tapRecognizer];
-        [tapRecognizer release];
         
         NSMutableArray *mutableArray = [[NSMutableArray alloc] initWithCapacity:4];
         self.imageViewArray = mutableArray;
-        [mutableArray release];
         
         NSMutableArray *overlayArray = [[NSMutableArray alloc] initWithCapacity:4];
         self.overlayViewArray = overlayArray;
-        [overlayArray release];
-
-        [self setAssets:assets];
 	}
 	return self;
 }
@@ -62,7 +57,6 @@
         } else {
             UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:asset.asset.thumbnail]];
             [_imageViewArray addObject:imageView];
-            [imageView release];
         }
         
         if (i < [_overlayViewArray count]) {
@@ -75,7 +69,6 @@
             UIImageView *overlayView = [[UIImageView alloc] initWithImage:overlayImage];
             [_overlayViewArray addObject:overlayView];
             overlayView.hidden = asset.selected ? NO : YES;
-            [overlayView release];
         }
     }
 }
@@ -120,12 +113,5 @@
 	}
 }
 
-- (void)dealloc
-{
-	[_rowAssets release];
-    [_imageViewArray release];
-    [_overlayViewArray release];
-	[super dealloc];
-}
 
 @end

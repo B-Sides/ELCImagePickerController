@@ -1,3 +1,6 @@
+//
+// ELCAssetPickerFilterDelegate.h
+
 @class ELCAsset;
 @class ELCAssetTablePicker;
 
