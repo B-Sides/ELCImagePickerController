@@ -29,6 +29,15 @@
     return self;
 }
 
+- (id)initWithRootViewController:(UIViewController *)rootViewController
+{
+    self = [super initWithRootViewController:rootViewController];
+    if (self) {
+        self.maximumImagesCount = 4;
+    }
+    return self;
+}
+
 - (void)cancelImagePicker
 {
 	if ([_imagePickerDelegate respondsToSelector:@selector(elcImagePickerControllerDidCancel:)]) {
