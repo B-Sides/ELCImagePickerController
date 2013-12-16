@@ -35,6 +35,7 @@
 @property (nonatomic, weak) id<ELCImagePickerControllerDelegate> imagePickerDelegate;
 @property (nonatomic, assign) NSInteger maximumImagesCount;
 
+- (id)initImagePicker;
 - (void)cancelImagePicker;
 
 @end

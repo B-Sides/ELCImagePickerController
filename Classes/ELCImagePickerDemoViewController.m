@@ -24,7 +24,7 @@
 
 - (IBAction)launchController
 {
-	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] init];
+	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
     elcPicker.maximumImagesCount = 4;
 	elcPicker.imagePickerDelegate = self;
     

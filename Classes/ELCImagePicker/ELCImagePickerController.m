@@ -17,7 +17,7 @@
 
 //Using auto synthesizers
 
-- (id)init
+- (id)initImagePicker
 {
     ELCAlbumPickerController *albumPicker = [[ELCAlbumPickerController alloc] initWithStyle:UITableViewStylePlain];
     
