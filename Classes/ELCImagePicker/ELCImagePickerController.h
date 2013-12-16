@@ -35,6 +35,12 @@
 @property (nonatomic, weak) id<ELCImagePickerControllerDelegate> imagePickerDelegate;
 @property (nonatomic, assign) NSInteger maximumImagesCount;
 
+/**
+ * YES if the picker should return the original image,
+ * or NO for an image suitable for displaying full screen on the device.
+ */
+@property (nonatomic, assign) BOOL returnsOriginalImage;
+
 - (id)initImagePicker;
 - (void)cancelImagePicker;
 

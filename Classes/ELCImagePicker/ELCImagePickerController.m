@@ -81,14 +81,22 @@
         //defaultRepresentation returns image as it appears in photo picker, rotated and sized,
         //so use UIImageOrientationUp when creating our image below.
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
+
+        CGImageRef imgRef = nil;
+        UIImageOrientation orientation = UIImageOrientationUp;
         
-        CGImageRef imgRef = [assetRep fullScreenImage];
+        if (_returnsOriginalImage) {
+            imgRef = [assetRep fullResolutionImage];
+            orientation = [assetRep orientation];
+        } else {
+            imgRef = [assetRep fullScreenImage];
+        }
         UIImage *img = [UIImage imageWithCGImage:imgRef
                                            scale:1.0f
-                                     orientation:UIImageOrientationUp];
+                                     orientation:orientation];
         [workingDictionary setObject:img forKey:UIImagePickerControllerOriginalImage];
 		[workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
-		
+        
 		[returnArray addObject:workingDictionary];
 		
 	}    
