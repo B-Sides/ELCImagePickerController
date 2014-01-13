@@ -78,26 +78,29 @@
         
         [workingDictionary setObject:obj forKey:UIImagePickerControllerMediaType];
 
-        //defaultRepresentation returns image as it appears in photo picker, rotated and sized,
-        //so use UIImageOrientationUp when creating our image below.
+        //This method returns nil for assets from a shared photo stream that are not yet available locally. If the asset becomes available in the future, an ALAssetsLibraryChangedNotification notification is posted.
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
 
-        CGImageRef imgRef = nil;
-        UIImageOrientation orientation = UIImageOrientationUp;
-        
-        if (_returnsOriginalImage) {
-            imgRef = [assetRep fullResolutionImage];
-            orientation = [assetRep orientation];
-        } else {
-            imgRef = [assetRep fullScreenImage];
+        if(assetRep != nil) {
+            CGImageRef imgRef = nil;
+            //defaultRepresentation returns image as it appears in photo picker, rotated and sized,
+            //so use UIImageOrientationUp when creating our image below.
+            UIImageOrientation orientation = UIImageOrientationUp;
+            
+            if (_returnsOriginalImage) {
+                imgRef = [assetRep fullResolutionImage];
+                orientation = [assetRep orientation];
+            } else {
+                imgRef = [assetRep fullScreenImage];
+            }
+            UIImage *img = [UIImage imageWithCGImage:imgRef
+                                               scale:1.0f
+                                         orientation:orientation];
+            [workingDictionary setObject:img forKey:UIImagePickerControllerOriginalImage];
+            [workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
+            
+            [returnArray addObject:workingDictionary];
         }
-        UIImage *img = [UIImage imageWithCGImage:imgRef
-                                           scale:1.0f
-                                     orientation:orientation];
-        [workingDictionary setObject:img forKey:UIImagePickerControllerOriginalImage];
-		[workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
-        
-		[returnArray addObject:workingDictionary];
 		
 	}    
 	if (_imagePickerDelegate != nil && [_imagePickerDelegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
