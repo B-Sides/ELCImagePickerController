@@ -24,6 +24,8 @@
 		2899E5220DE3E06400AC0155 /* ELCImagePickerDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ELCImagePickerDemoViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ELCImagePickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */; };
+		5FAEB05419090404002D73C4 /* EYLargePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEB05319090404002D73C4 /* EYLargePhoto.m */; };
+		5FAEB05719090452002D73C4 /* EYLargePhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEB05619090452002D73C4 /* EYLargePhotoManager.m */; };
 		83C6BC9714476B280064D71D /* elc-ios-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */; };
 		83C6BC9814476B280064D71D /* elc-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6BC9614476B280064D71D /* elc-ios-icon.png */; };
 		E29A5E3C1239C42A008BB149 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A5E3B1239C42A008BB149 /* AssetsLibrary.framework */; };
@@ -57,6 +59,11 @@
 		28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerDemoViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ELCImagePickerDemo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerDemo_Prefix.pch; sourceTree = "<group>"; };
+		5FAEB05219090404002D73C4 /* EYLargePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYLargePhoto.h; sourceTree = "<group>"; };
+		5FAEB05319090404002D73C4 /* EYLargePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYLargePhoto.m; sourceTree = "<group>"; };
+		5FAEB05519090452002D73C4 /* EYLargePhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYLargePhotoManager.h; sourceTree = "<group>"; };
+		5FAEB05619090452002D73C4 /* EYLargePhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYLargePhotoManager.m; sourceTree = "<group>"; };
+		5FAEB05819090C84002D73C4 /* EYLargePhotoHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EYLargePhotoHeader.h; sourceTree = "<group>"; };
 		83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon@2x.png"; sourceTree = "<group>"; };
 		83C6BC9614476B280064D71D /* elc-ios-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ELCImagePickerDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ELCImagePickerDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -82,6 +89,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5FAEB051190903F8002D73C4 /* EYLargePhoto */,
 				4252A0981593013500086D05 /* ELCImagePicker */,
 				1D3623240D0F684500981E51 /* ELCImagePickerDemoAppDelegate.h */,
 				1D3623250D0F684500981E51 /* ELCImagePickerDemoAppDelegate.m */,
@@ -174,6 +182,18 @@
 			path = ELCImagePicker;
 			sourceTree = "<group>";
 		};
+		5FAEB051190903F8002D73C4 /* EYLargePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				5FAEB05819090C84002D73C4 /* EYLargePhotoHeader.h */,
+				5FAEB05219090404002D73C4 /* EYLargePhoto.h */,
+				5FAEB05319090404002D73C4 /* EYLargePhoto.m */,
+				5FAEB05519090452002D73C4 /* EYLargePhotoManager.h */,
+				5FAEB05619090452002D73C4 /* EYLargePhotoManager.m */,
+			);
+			path = EYLargePhoto;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,6 +221,11 @@
 			isa = PBXProject;
 			attributes = {
 				ORGANIZATIONNAME = "ELC Technologies";
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 77SM2DKNM6;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "ELCImagePickerDemo" */;
 			compatibilityVersion = "Xcode 3.1";
@@ -247,10 +272,12 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ELCImagePickerDemoAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ELCImagePickerDemoViewController.m in Sources */,
+				5FAEB05419090404002D73C4 /* EYLargePhoto.m in Sources */,
 				1A2C100517026CF0004FAFA0 /* ELCAssetTablePicker.m in Sources */,
 				1A2C100617026CF0004FAFA0 /* ELCImagePickerController.m in Sources */,
 				1A2C100717026CF0004FAFA0 /* ELCAlbumPickerController.m in Sources */,
 				1A2C100817026CF0004FAFA0 /* ELCAsset.m in Sources */,
+				5FAEB05719090452002D73C4 /* EYLargePhotoManager.m in Sources */,
 				1A2C100917026CF0004FAFA0 /* ELCAssetCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +291,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Yang (64WP457TN6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -273,7 +301,8 @@
 				INFOPLIST_FILE = "ELCImagePickerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = ELCImagePickerDemo;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "E91F0CF1-A66D-445E-909A-CB7642B9EC16";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E91F0CF1-A66D-445E-909A-CB7642B9EC16";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -284,12 +313,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Yang (64WP457TN6)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ELCImagePickerDemo_Prefix.pch;
 				INFOPLIST_FILE = "ELCImagePickerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = ELCImagePickerDemo;
+				PROVISIONING_PROFILE = "E91F0CF1-A66D-445E-909A-CB7642B9EC16";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

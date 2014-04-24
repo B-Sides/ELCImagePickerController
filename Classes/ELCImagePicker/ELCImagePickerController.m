@@ -12,6 +12,7 @@
 #import "ELCAssetTablePicker.h"
 #import "ELCAlbumPickerController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "EYLargePhotoHeader.h"
 
 @implementation ELCImagePickerController
 
@@ -63,8 +64,10 @@
 - (void)selectedAssets:(NSArray *)assets
 {
 	NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-	
+        
+    
 	for(ALAsset *asset in assets) {
+        @autoreleasepool {
 		id obj = [asset valueForProperty:ALAssetPropertyType];
 		if (!obj) {
 			continue;
@@ -93,15 +96,16 @@
             } else {
                 imgRef = [assetRep fullScreenImage];
             }
-            UIImage *img = [UIImage imageWithCGImage:imgRef
+            UIImage *originalimage = [UIImage imageWithCGImage:imgRef
                                                scale:1.0f
                                          orientation:orientation];
-            [workingDictionary setObject:img forKey:UIImagePickerControllerOriginalImage];
+            EYLargePhoto* photo=[[EYLargePhotoManager share]saveOriginalImage:originalimage];
+            [workingDictionary setObject:photo forKey:UIImagePickerControllerOriginalImage];
             [workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
             
             [returnArray addObject:workingDictionary];
         }
-		
+		}
 	}    
 	if (_imagePickerDelegate != nil && [_imagePickerDelegate respondsToSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:)]) {
 		[_imagePickerDelegate performSelector:@selector(elcImagePickerController:didFinishPickingMediaWithInfo:) withObject:self withObject:returnArray];

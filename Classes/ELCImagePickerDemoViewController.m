@@ -11,6 +11,7 @@
 #import "ELCImagePickerController.h"
 #import "ELCAlbumPickerController.h"
 #import "ELCAssetTablePicker.h"
+#import "EYLargePhoto/EYLargePhotoHeader.h"
 
 @interface ELCImagePickerDemoViewController ()
 
@@ -25,8 +26,8 @@
 - (IBAction)launchController
 {
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
-    elcPicker.maximumImagesCount = 4;
-    elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+    elcPicker.maximumImagesCount = 10;
+    elcPicker.returnsOriginalImage =YES; //Only return the fullScreenImage, not the fullResolutionImage
 	elcPicker.imagePickerDelegate = self;
     
     [self presentViewController:elcPicker animated:YES completion:nil];
@@ -100,8 +101,11 @@
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];
 	
 	for (NSDictionary *dict in info) {
-	
-        UIImage *image = [dict objectForKey:UIImagePickerControllerOriginalImage];
+        
+//        UIImage *originalimage = [dict objectForKey:UIImagePickerControllerOriginalImage];
+//        UIImage* image=[[EYLargePhotoManager share]saveOriginalImage:originalimage].thumb;
+        EYLargePhoto *photo = [dict objectForKey:UIImagePickerControllerOriginalImage];
+        UIImage* image=photo.thumb;
         [images addObject:image];
         
 		UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
