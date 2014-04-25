@@ -7,6 +7,7 @@
 //
 
 #import "EYLargePhotoManager.h"
+#import "UIImage+EYFixOrientation.h"
 
 @implementation EYLargePhotoManager
 +(EYLargePhotoManager*)share{
@@ -22,7 +23,6 @@
         NSError* err = nil;
         NSString* file;
         while (file = [en nextObject]) {
-            NSLog(@"file:%@",file);
             if (![fm removeItemAtPath:[path stringByAppendingPathComponent:file] error:&err]
                 && err) {
                 NSLog(@"oops: %@", err);
@@ -39,13 +39,7 @@
 }
 -(NSString*)getOriginalFilePath:(EYLargePhoto*)photo{
     NSString* localPath=[self getTmpPath];
-#ifdef DEBUG
-    NSString* fileName=[NSString stringWithFormat:@"%@.png",photo];
-//    NSLog(@"model....Debug");
-#else
     NSString* fileName=[NSString stringWithFormat:@"%@",photo];
-//    NSLog(@"model....Release");
-#endif
     return [localPath stringByAppendingPathComponent:fileName];
 }
 
@@ -62,22 +56,21 @@
     CGImageRef cr = CGImageCreateWithImageInRect([img CGImage], newFr);
     UIImage *cropped = [UIImage imageWithCGImage:cr];
     CGImageRelease(cr);
-    
-    return [UIImage imageWithData:UIImageJPEGRepresentation(cropped, 1/10)];
+    return [UIImage imageWithData:UIImageJPEGRepresentation(cropped, 0.05)];
 }
 -(EYLargePhoto*)saveOriginalImage:(UIImage*)originalImg{
-    
-    
     EYLargePhoto* photo=[[EYLargePhoto alloc]init];
     @autoreleasepool {
-        NSData* data= UIImageJPEGRepresentation(originalImg, 0.9);
+        originalImg=[originalImg fixOrientation];
+        UIImage* newImg=[UIImage imageWithCGImage:[originalImg CGImage] scale:1 orientation:originalImg.imageOrientation];
+        NSData* data= UIImageJPEGRepresentation(newImg, 0.9);
         
         //save original file
         NSFileManager *fm = [NSFileManager defaultManager];
         [fm createFileAtPath:[self getOriginalFilePath:photo] contents:data attributes:nil];
         
         //create thumb
-        photo.thumb=[self getSqareThumb:originalImg width:100];
+        photo.thumb=[self getSqareThumb:newImg width:100];
     }
     return photo;
 }

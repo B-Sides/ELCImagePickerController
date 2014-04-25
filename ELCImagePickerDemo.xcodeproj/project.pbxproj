@@ -26,6 +26,7 @@
 		28D7ACF80DDB3853001CB0EB /* ELCImagePickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */; };
 		5FAEB05419090404002D73C4 /* EYLargePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEB05319090404002D73C4 /* EYLargePhoto.m */; };
 		5FAEB05719090452002D73C4 /* EYLargePhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEB05619090452002D73C4 /* EYLargePhotoManager.m */; };
+		5FAEB05B190A32DD002D73C4 /* UIImage+EYFixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEB05A190A32DD002D73C4 /* UIImage+EYFixOrientation.m */; };
 		83C6BC9714476B280064D71D /* elc-ios-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */; };
 		83C6BC9814476B280064D71D /* elc-ios-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 83C6BC9614476B280064D71D /* elc-ios-icon.png */; };
 		E29A5E3C1239C42A008BB149 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A5E3B1239C42A008BB149 /* AssetsLibrary.framework */; };
@@ -64,6 +65,8 @@
 		5FAEB05519090452002D73C4 /* EYLargePhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYLargePhotoManager.h; sourceTree = "<group>"; };
 		5FAEB05619090452002D73C4 /* EYLargePhotoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYLargePhotoManager.m; sourceTree = "<group>"; };
 		5FAEB05819090C84002D73C4 /* EYLargePhotoHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EYLargePhotoHeader.h; sourceTree = "<group>"; };
+		5FAEB059190A32DD002D73C4 /* UIImage+EYFixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+EYFixOrientation.h"; sourceTree = "<group>"; };
+		5FAEB05A190A32DD002D73C4 /* UIImage+EYFixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+EYFixOrientation.m"; sourceTree = "<group>"; };
 		83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon@2x.png"; sourceTree = "<group>"; };
 		83C6BC9614476B280064D71D /* elc-ios-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ELCImagePickerDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ELCImagePickerDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 				5FAEB05319090404002D73C4 /* EYLargePhoto.m */,
 				5FAEB05519090452002D73C4 /* EYLargePhotoManager.h */,
 				5FAEB05619090452002D73C4 /* EYLargePhotoManager.m */,
+				5FAEB059190A32DD002D73C4 /* UIImage+EYFixOrientation.h */,
+				5FAEB05A190A32DD002D73C4 /* UIImage+EYFixOrientation.m */,
 			);
 			path = EYLargePhoto;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* ELCImagePickerDemoAppDelegate.m in Sources */,
+				5FAEB05B190A32DD002D73C4 /* UIImage+EYFixOrientation.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ELCImagePickerDemoViewController.m in Sources */,
 				5FAEB05419090404002D73C4 /* EYLargePhoto.m in Sources */,
 				1A2C100517026CF0004FAFA0 /* ELCAssetTablePicker.m in Sources */,
