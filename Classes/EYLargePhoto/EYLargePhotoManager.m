@@ -77,5 +77,11 @@
 -(NSData*)getOriginalData:(EYLargePhoto*)photo{
     return [NSData dataWithContentsOfFile:[self getOriginalFilePath:photo]];
 }
+-(void)deleteImage:(EYLargePhoto*)photo{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    [fm removeItemAtPath:[NSString stringWithFormat:@"%@",photo] error:0];
+}
+
+
 
 @end

@@ -13,4 +13,5 @@
 +(EYLargePhotoManager*)share;
 -(NSData*)getOriginalData:(EYLargePhoto*)photo;
 -(EYLargePhoto*)saveOriginalImage:(UIImage*)originalImg;
+-(void)deleteImage:(EYLargePhoto*)photo;
 @end

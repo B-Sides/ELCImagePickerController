@@ -8,10 +8,7 @@
 
 #import "ELCImagePickerDemoAppDelegate.h"
 #import "ELCImagePickerDemoViewController.h"
-#import "ELCImagePickerController.h"
-#import "ELCAlbumPickerController.h"
-#import "ELCAssetTablePicker.h"
-#import "EYLargePhoto/EYLargePhotoHeader.h"
+
 
 @interface ELCImagePickerDemoViewController ()
 

@@ -67,6 +67,7 @@
 		5FAEB05819090C84002D73C4 /* EYLargePhotoHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EYLargePhotoHeader.h; sourceTree = "<group>"; };
 		5FAEB059190A32DD002D73C4 /* UIImage+EYFixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+EYFixOrientation.h"; sourceTree = "<group>"; };
 		5FAEB05A190A32DD002D73C4 /* UIImage+EYFixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+EYFixOrientation.m"; sourceTree = "<group>"; };
+		5FAEB088190A3FA9002D73C4 /* ELCImagePickerHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerHeader.h; sourceTree = "<group>"; };
 		83C6BC9514476B280064D71D /* elc-ios-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon@2x.png"; sourceTree = "<group>"; };
 		83C6BC9614476B280064D71D /* elc-ios-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "elc-ios-icon.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ELCImagePickerDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ELCImagePickerDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 				1A2C0FFB17026CF0004FAFA0 /* ELCAssetTablePicker.m */,
 				1A2C100217026CF0004FAFA0 /* ELCImagePickerController.h */,
 				1A2C0FFC17026CF0004FAFA0 /* ELCImagePickerController.m */,
+				5FAEB088190A3FA9002D73C4 /* ELCImagePickerHeader.h */,
 			);
 			path = ELCImagePicker;
 			sourceTree = "<group>";
