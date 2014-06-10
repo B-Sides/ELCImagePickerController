@@ -24,6 +24,7 @@
     self = [super initWithRootViewController:albumPicker];
     if (self) {
         self.maximumImagesCount = 4;
+        self.returnsImage = YES;
         [albumPicker setParent:self];
     }
     return self;
@@ -34,6 +35,7 @@
     self = [super initWithRootViewController:rootViewController];
     if (self) {
         self.maximumImagesCount = 4;
+        self.returnsImage = YES;
     }
     return self;
 }
@@ -82,21 +84,24 @@
         ALAssetRepresentation *assetRep = [asset defaultRepresentation];
 
         if(assetRep != nil) {
-            CGImageRef imgRef = nil;
-            //defaultRepresentation returns image as it appears in photo picker, rotated and sized,
-            //so use UIImageOrientationUp when creating our image below.
-            UIImageOrientation orientation = UIImageOrientationUp;
+            if (_returnsImage) {
+                CGImageRef imgRef = nil;
+                //defaultRepresentation returns image as it appears in photo picker, rotated and sized,
+                //so use UIImageOrientationUp when creating our image below.
+                UIImageOrientation orientation = UIImageOrientationUp;
             
-            if (_returnsOriginalImage) {
-                imgRef = [assetRep fullResolutionImage];
-                orientation = [assetRep orientation];
-            } else {
-                imgRef = [assetRep fullScreenImage];
+                if (_returnsOriginalImage) {
+                    imgRef = [assetRep fullResolutionImage];
+                    orientation = [assetRep orientation];
+                } else {
+                    imgRef = [assetRep fullScreenImage];
+                }
+                UIImage *img = [UIImage imageWithCGImage:imgRef
+                                                   scale:1.0f
+                                             orientation:orientation];
+                [workingDictionary setObject:img forKey:UIImagePickerControllerOriginalImage];
             }
-            UIImage *img = [UIImage imageWithCGImage:imgRef
-                                               scale:1.0f
-                                         orientation:orientation];
-            [workingDictionary setObject:img forKey:UIImagePickerControllerOriginalImage];
+
             [workingDictionary setObject:[[asset valueForProperty:ALAssetPropertyURLs] valueForKey:[[[asset valueForProperty:ALAssetPropertyURLs] allKeys] objectAtIndex:0]] forKey:UIImagePickerControllerReferenceURL];
             
             [returnArray addObject:workingDictionary];

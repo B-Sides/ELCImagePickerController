@@ -36,8 +36,15 @@
 @property (nonatomic, assign) NSInteger maximumImagesCount;
 
 /**
+ * YES if the picker should return a UIImage along with other meta info (this is the default),
+ * NO if the picker should return the assetURL and other meta info, but no actual UIImage.
+ */
+@property (nonatomic, assign) BOOL returnsImage;
+
+/**
  * YES if the picker should return the original image,
  * or NO for an image suitable for displaying full screen on the device.
+ * Does nothing if `returnsImage` is NO.
  */
 @property (nonatomic, assign) BOOL returnsOriginalImage;
 
