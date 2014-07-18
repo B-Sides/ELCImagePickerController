@@ -98,21 +98,25 @@
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];
 	
 	for (NSDictionary *dict in info) {
-        
-//        UIImage *originalimage = [dict objectForKey:UIImagePickerControllerOriginalImage];
-//        UIImage* image=[[EYLargePhotoManager share]saveOriginalImage:originalimage].thumb;
-        EYLargePhoto *photo = [dict objectForKey:UIImagePickerControllerOriginalImage];
-        UIImage* image=photo.thumb;
-        [images addObject:image];
-        
-		UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
-		[imageview setContentMode:UIViewContentModeScaleAspectFit];
-		imageview.frame = workingFrame;
-		
-		[_scrollView addSubview:imageview];
-		
-		workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
-	}
+        if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
+    //        UIImage *originalimage = [dict objectForKey:UIImagePickerControllerOriginalImage];
+    //        UIImage* image=[[EYLargePhotoManager share]saveOriginalImage:originalimage].thumb;
+            EYLargePhoto *photo = [[EYLargePhoto alloc] init];
+            photo.thumb = [dict objectForKey:UIImagePickerControllerOriginalImage];
+            UIImage* image=photo.thumb;
+            [images addObject:image];
+            
+            UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
+            [imageview setContentMode:UIViewContentModeScaleAspectFit];
+            imageview.frame = workingFrame;
+            
+            [_scrollView addSubview:imageview];
+            
+            workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+        } else {
+            NSLog(@"%@", [dict objectForKey:UIImagePickerControllerReferenceURL]);
+        }
+    }
     
     self.chosenImages = images;
 	
