@@ -23,6 +23,7 @@
 - (IBAction)launchController
 {
 	ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
+
     elcPicker.maximumImagesCount = 100;
     elcPicker.returnsOriginalImage =YES; //Only return the fullScreenImage, not the fullResolutionImage
 	elcPicker.imagePickerDelegate = self;
@@ -96,25 +97,43 @@
 	workingFrame.origin.x = 0;
     
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];
-	
 	for (NSDictionary *dict in info) {
-        if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-    //        UIImage *originalimage = [dict objectForKey:UIImagePickerControllerOriginalImage];
-    //        UIImage* image=[[EYLargePhotoManager share]saveOriginalImage:originalimage].thumb;
-            EYLargePhoto *photo = [[EYLargePhoto alloc] init];
-            photo.thumb = [dict objectForKey:UIImagePickerControllerOriginalImage];
-            UIImage* image=photo.thumb;
-            [images addObject:image];
-            
-            UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
-            [imageview setContentMode:UIViewContentModeScaleAspectFit];
-            imageview.frame = workingFrame;
-            
-            [_scrollView addSubview:imageview];
-            
-            workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+        if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypePhoto){
+            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
+                EYLargePhoto *photo = [[EYLargePhoto alloc] init];
+                photo.thumb = [dict objectForKey:UIImagePickerControllerOriginalImage];
+                UIImage* image=photo.thumb;
+                [images addObject:image];
+                
+                UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
+                [imageview setContentMode:UIViewContentModeScaleAspectFit];
+                imageview.frame = workingFrame;
+                
+                [_scrollView addSubview:imageview];
+                
+                workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+            } else {
+                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
+            }
+        } else if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypeVideo){
+            if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
+                EYLargePhoto *photo = [[EYLargePhoto alloc] init];
+                photo.thumb = [dict objectForKey:UIImagePickerControllerOriginalImage];
+                UIImage* image=photo.thumb;
+                [images addObject:image];
+                
+                UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
+                [imageview setContentMode:UIViewContentModeScaleAspectFit];
+                imageview.frame = workingFrame;
+                
+                [_scrollView addSubview:imageview];
+                
+                workingFrame.origin.x = workingFrame.origin.x + workingFrame.size.width;
+            } else {
+                NSLog(@"UIImagePickerControllerReferenceURL = %@", dict);
+            }
         } else {
-            NSLog(@"%@", [dict objectForKey:UIImagePickerControllerReferenceURL]);
+            NSLog(@"Uknown asset type");
         }
     }
     

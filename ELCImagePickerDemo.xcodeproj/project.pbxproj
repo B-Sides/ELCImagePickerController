@@ -24,6 +24,7 @@
 		2899E5220DE3E06400AC0155 /* ELCImagePickerDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* ELCImagePickerDemoViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* ELCImagePickerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */; };
+		4AAFDA62194840F20020FCC4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AAFDA61194840F20020FCC4 /* MobileCoreServices.framework */; };
 		5FAEB05419090404002D73C4 /* EYLargePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEB05319090404002D73C4 /* EYLargePhoto.m */; };
 		5FAEB05719090452002D73C4 /* EYLargePhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEB05619090452002D73C4 /* EYLargePhotoManager.m */; };
 		5FAEB05B190A32DD002D73C4 /* UIImage+EYFixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAEB05A190A32DD002D73C4 /* UIImage+EYFixOrientation.m */; };
@@ -60,6 +61,7 @@
 		28D7ACF70DDB3853001CB0EB /* ELCImagePickerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELCImagePickerDemoViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ELCImagePickerDemo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCImagePickerDemo_Prefix.pch; sourceTree = "<group>"; };
+		4AAFDA61194840F20020FCC4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5FAEB05219090404002D73C4 /* EYLargePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYLargePhoto.h; sourceTree = "<group>"; };
 		5FAEB05319090404002D73C4 /* EYLargePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EYLargePhoto.m; sourceTree = "<group>"; };
 		5FAEB05519090452002D73C4 /* EYLargePhotoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYLargePhotoManager.h; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AAFDA62194840F20020FCC4 /* MobileCoreServices.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -159,6 +162,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4AAFDA61194840F20020FCC4 /* MobileCoreServices.framework */,
 				E29A5E3B1239C42A008BB149 /* AssetsLibrary.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -299,8 +303,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Yang (64WP457TN6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -309,8 +313,8 @@
 				INFOPLIST_FILE = "ELCImagePickerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = ELCImagePickerDemo;
-				PROVISIONING_PROFILE = "E91F0CF1-A66D-445E-909A-CB7642B9EC16";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E91F0CF1-A66D-445E-909A-CB7642B9EC16";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -321,14 +325,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eric Yang (64WP457TN6)";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ELCImagePickerDemo_Prefix.pch;
 				INFOPLIST_FILE = "ELCImagePickerDemo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = ELCImagePickerDemo;
-				PROVISIONING_PROFILE = "E91F0CF1-A66D-445E-909A-CB7642B9EC16";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

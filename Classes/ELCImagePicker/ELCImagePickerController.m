@@ -12,6 +12,7 @@
 #import "ELCAssetTablePicker.h"
 #import "ELCAlbumPickerController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 #import "EYLargePhotoHeader.h"
 
 @implementation ELCImagePickerController
@@ -27,18 +28,35 @@
         self.maximumImagesCount = 4;
         self.returnsImage = YES;
         [albumPicker setParent:self];
+        self.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie];
     }
     return self;
 }
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController
 {
+
     self = [super initWithRootViewController:rootViewController];
     if (self) {
         self.maximumImagesCount = 4;
         self.returnsImage = YES;
     }
     return self;
+}
+
+- (ELCAlbumPickerController *)albumPicker
+{
+    return self.viewControllers[0];
+}
+
+- (void)setMediaTypes:(NSArray *)mediaTypes
+{
+    self.albumPicker.mediaTypes = mediaTypes;
+}
+
+- (NSArray *)mediaTypes
+{
+    return self.albumPicker.mediaTypes;
 }
 
 - (void)cancelImagePicker

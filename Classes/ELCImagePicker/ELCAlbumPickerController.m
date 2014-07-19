@@ -8,6 +8,7 @@
 #import "ELCAlbumPickerController.h"
 #import "ELCImagePickerController.h"
 #import "ELCAssetTablePicker.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @interface ELCAlbumPickerController ()
 
@@ -98,6 +99,22 @@
 	[_parent selectedAssets:assets];
 }
 
+- (ALAssetsFilter *)assetFilter
+{
+    if([self.mediaTypes containsObject:(NSString *)kUTTypeImage] && [self.mediaTypes containsObject:(NSString *)kUTTypeMovie])
+    {
+        return [ALAssetsFilter allAssets];
+    }
+    else if([self.mediaTypes containsObject:(NSString *)kUTTypeMovie])
+    {
+        return [ALAssetsFilter allVideos];
+    }
+    else
+    {
+        return [ALAssetsFilter allPhotos];
+    }
+}
+
 #pragma mark -
 #pragma mark Table view data source
 
@@ -127,11 +144,11 @@
     
     // Get count
     ALAssetsGroup *g = (ALAssetsGroup*)[self.assetGroups objectAtIndex:indexPath.row];
-    [g setAssetsFilter:[ALAssetsFilter allPhotos]];
+    [g setAssetsFilter:[self assetFilter]];
     NSInteger gCount = [g numberOfAssets];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ (%ld)",[g valueForProperty:ALAssetsGroupPropertyName], (long)gCount];
-    [cell.imageView setImage:[UIImage imageWithCGImage:[(ALAssetsGroup*)[self.assetGroups objectAtIndex:indexPath.row] posterImage]]];
+    [cell.imageView setImage:[UIImage imageWithCGImage:[g posterImage]]];
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	
     return cell;
@@ -146,7 +163,7 @@
 	picker.parent = self;
 
     picker.assetGroup = [self.assetGroups objectAtIndex:indexPath.row];
-    [picker.assetGroup setAssetsFilter:[ALAssetsFilter allPhotos]];
+    [picker.assetGroup setAssetsFilter:[self assetFilter]];
     
 	picker.assetPickerFilterDelegate = self.assetPickerFilterDelegate;
 	
