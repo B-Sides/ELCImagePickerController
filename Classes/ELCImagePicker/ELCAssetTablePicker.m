@@ -168,15 +168,10 @@
 
 - (BOOL)shouldDeselectAsset:(ELCAsset *)asset
 {
-    NSUInteger selectionCount = 0;
-    for (ELCAsset *elcAsset in self.elcAssets) {
-        if (elcAsset.selected) selectionCount++;
+    if (self.immediateReturn){
+        return NO;
     }
-    BOOL shouldDeselect = YES;
-    if ([self.parent respondsToSelector:@selector(shouldDeselectAsset:previousCount:)]) {
-        shouldDeselect = [self.parent shouldDeselectAsset:asset previousCount:selectionCount];
-    }
-    return shouldDeselect;
+    return YES;
 }
 
 - (void)assetDeselected:(ELCAsset *)asset
@@ -193,6 +188,7 @@
         NSArray *singleAssetArray = @[asset.asset];
         [(NSObject *)self.parent performSelector:@selector(selectedAssets:) withObject:singleAssetArray afterDelay:0];
     }
+    
 }
 
 #pragma mark UITableViewDataSource Delegate Methods
