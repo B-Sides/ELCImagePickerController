@@ -11,6 +11,10 @@
 @implementation ELCAsset
 
 //Using auto synthesizers
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"ELCAsset index:%d",self.index];
+}
 
 - (id)initWithAsset:(ALAsset*)asset
 {
@@ -44,6 +48,17 @@
     }
 }
 
+- (NSComparisonResult)compareWithIndex:(ELCAsset *)_ass
+{
+    if (self.index > _ass.index) {
+        return NSOrderedDescending;
+    }
+    else if (self.index < _ass.index)
+    {
+        return NSOrderedAscending;
+    }
+    return NSOrderedSame;
+}
 
 @end
 

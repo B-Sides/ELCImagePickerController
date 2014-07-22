@@ -34,6 +34,7 @@
 
 @property (nonatomic, weak) id<ELCImagePickerControllerDelegate> imagePickerDelegate;
 @property (nonatomic, assign) NSInteger maximumImagesCount;
+@property (nonatomic, assign) BOOL onOrder;
 /**
  * An array indicating the media types to be accessed by the media picker controller.
  * Same usage as for UIImagePickerController.

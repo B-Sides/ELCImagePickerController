@@ -9,6 +9,7 @@
 #import "ELCAssetCell.h"
 #import "ELCAsset.h"
 #import "ELCAlbumPickerController.h"
+#import "ELCConsole.h"
 
 @interface ELCAssetTablePicker ()
 
@@ -54,6 +55,12 @@
 {
     [super viewWillAppear:animated];
     self.columns = self.view.bounds.size.width / 80;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[ELCConsole mainConsole] removeAllIndex];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -112,15 +119,20 @@
     }
 }
 
+
 - (void)doneAction:(id)sender
 {	
 	NSMutableArray *selectedAssetsImages = [[NSMutableArray alloc] init];
 	    
 	for (ELCAsset *elcAsset in self.elcAssets) {
 		if ([elcAsset selected]) {
-			[selectedAssetsImages addObject:[elcAsset asset]];
+			[selectedAssetsImages addObject:elcAsset];
 		}
 	}
+    if ([[ELCConsole mainConsole] onOrder]) {
+        [selectedAssetsImages sortUsingSelector:@selector(compareWithIndex:)];
+    }
+//    NSLog(@"%@",selectedAssetsImages);
     [self.parent selectedAssets:selectedAssetsImages];
 }
 
@@ -149,7 +161,7 @@
         }
     }
     if (self.immediateReturn) {
-        NSArray *singleAssetArray = @[asset.asset];
+        NSArray *singleAssetArray = @[asset];
         [(NSObject *)self.parent performSelector:@selector(selectedAssets:) withObject:singleAssetArray afterDelay:0];
     }
 }

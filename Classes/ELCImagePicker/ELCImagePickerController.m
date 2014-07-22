@@ -14,6 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "EYLargePhotoHeader.h"
+#import "ELCConsole.h"
 
 @implementation ELCImagePickerController
 
@@ -84,9 +85,9 @@
 - (void)selectedAssets:(NSArray *)assets
 {
 	NSMutableArray *returnArray = [[NSMutableArray alloc] init];
-        
-    
-	for(ALAsset *asset in assets) {
+	
+	for(ELCAsset *elcasset in assets) {
+        ALAsset *asset = elcasset.asset;
 		id obj = [asset valueForProperty:ALAssetPropertyType];
 		if (!obj) {
 			continue;
@@ -142,6 +143,16 @@
     } else {
         return toInterfaceOrientation != UIInterfaceOrientationPortraitUpsideDown;
     }
+}
+
+- (BOOL)onOrder
+{
+    return [[ELCConsole mainConsole] onOrder];
+}
+
+- (void)setOnOrder:(BOOL)onOrder
+{
+    [[ELCConsole mainConsole] setOnOrder:onOrder];
 }
 
 @end
