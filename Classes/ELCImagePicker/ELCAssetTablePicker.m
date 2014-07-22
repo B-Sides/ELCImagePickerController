@@ -166,6 +166,35 @@
     }
 }
 
+- (BOOL)shouldDeselectAsset:(ELCAsset *)asset
+{
+    NSUInteger selectionCount = 0;
+    for (ELCAsset *elcAsset in self.elcAssets) {
+        if (elcAsset.selected) selectionCount++;
+    }
+    BOOL shouldDeselect = YES;
+    if ([self.parent respondsToSelector:@selector(shouldDeselectAsset:previousCount:)]) {
+        shouldDeselect = [self.parent shouldDeselectAsset:asset previousCount:selectionCount];
+    }
+    return shouldDeselect;
+}
+
+- (void)assetDeselected:(ELCAsset *)asset
+{
+    if (self.singleSelection) {
+        for (ELCAsset *elcAsset in self.elcAssets) {
+            if (asset != elcAsset) {
+                elcAsset.selected = NO;
+            }
+        }
+    }
+
+    if (self.immediateReturn) {
+        NSArray *singleAssetArray = @[asset.asset];
+        [(NSObject *)self.parent performSelector:@selector(selectedAssets:) withObject:singleAssetArray afterDelay:0];
+    }
+}
+
 #pragma mark UITableViewDataSource Delegate Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
