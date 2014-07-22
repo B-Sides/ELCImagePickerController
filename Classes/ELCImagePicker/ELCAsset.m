@@ -39,11 +39,21 @@
                 return;
             }
         }
+    } else {
+        if ([_parent respondsToSelector:@selector(shouldDeselectAsset:)]) {
+            if (![_parent shouldDeselectAsset:self]) {
+                return;
+            }
+        }
     }
     _selected = selected;
     if (selected) {
         if (_parent != nil && [_parent respondsToSelector:@selector(assetSelected:)]) {
             [_parent assetSelected:self];
+        }
+    } else {
+        if (_parent != nil && [_parent respondsToSelector:@selector(assetDeselected:)]) {
+            [_parent assetDeselected:self];
         }
     }
 }

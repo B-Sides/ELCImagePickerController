@@ -94,6 +94,11 @@
     return [self.parent shouldSelectAsset:asset previousCount:previousCount];
 }
 
+- (BOOL)shouldDeselectAsset:(ELCAsset *)asset previousCount:(NSUInteger)previousCount
+{
+    return [self.parent shouldDeselectAsset:asset previousCount:previousCount];
+}
+
 - (void)selectedAssets:(NSArray*)assets
 {
 	[_parent selectedAssets:assets];
