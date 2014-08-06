@@ -2,22 +2,6 @@
 
 *A clone of the UIImagePickerController using the Assets Library Framework allowing for multiple asset selection.*
 
-#fix some bug
-#####edit at 2014-04-25 17:33:53
-
-* bug 1: choose large photo (ofter taken by iphone camera, about 2MB), there will be memory warning
-
-   use **_EYLargePhoto_** to store very large image to disk instead of memory, in case there is memory pressure
-
-* bug 2: choose large photo (ofter taken by iphone camera, about 2MB), the photo ofter rotate 90˚ CCW.
-
-   i will rotate the photo to correct oritation with **_EYLargePhotoManager_**
-   
-   
-
-
-
-
 ## Usage
 
 The image picker is created and displayed in a very similar manner to the `UIImagePickerController`. The sample application  shows its use. To display the controller you instantiate it and display it modally like so.
