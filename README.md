@@ -24,16 +24,16 @@ The image picker is created and displayed in a very similar manner to the `UIIma
 
 ```obj-c
 // Create the image picker
-ELCImagePickerController *imagePicker = [[ELCImagePickerController alloc] initImagePicker];
-imagePicker.maximumImagesCount = 4; //Set the maximum number of images to select, defaults to 4
-imagePicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
-imagePicker.imagePickerDelegate = self;
+ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
+elcPicker.maximumImagesCount = 4; //Set the maximum number of images to select, defaults to 4
+elcPicker.returnsOriginalImage = NO; //Only return the fullScreenImage, not the fullResolutionImage
+elcPicker.imagePickerDelegate = self;
 
 //Present modally
 [self presentViewController:elcPicker animated:YES completion:nil];
 
 // Release if not using ARC
-[imagePicker release];
+[elcPicker release];
 ```
 
 The `ELCImagePickerController` will return the select images back to the `ELCImagePickerControllerDelegate`. The delegate contains methods very similar to the `UIImagePickerControllerDelegate`. Instead of returning one dictionary representing a single image the controller sends back an array of similarly structured dictionaries. The two delegate methods are:
