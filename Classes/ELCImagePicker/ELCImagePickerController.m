@@ -28,6 +28,7 @@
     if (self) {
         self.maximumImagesCount = 4;
         self.returnsImage = YES;
+        self.returnsOriginalImage = YES;
         [albumPicker setParent:self];
         self.mediaTypes = @[(NSString *)kUTTypeImage, (NSString *)kUTTypeMovie];
     }
@@ -80,6 +81,11 @@
                           otherButtonTitles:NSLocalizedString(@"Okay", nil), nil] show];
     }
     return shouldSelect;
+}
+
+- (BOOL)shouldDeselectAsset:(ELCAsset *)asset previousCount:(NSUInteger)previousCount;
+{
+    return YES;
 }
 
 - (void)selectedAssets:(NSArray *)assets
