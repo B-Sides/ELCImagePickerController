@@ -132,7 +132,6 @@
     if ([[ELCConsole mainConsole] onOrder]) {
         [selectedAssetsImages sortUsingSelector:@selector(compareWithIndex:)];
     }
-//    NSLog(@"%@",selectedAssetsImages);
     [self.parent selectedAssets:selectedAssetsImages];
 }
 

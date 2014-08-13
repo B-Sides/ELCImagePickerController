@@ -78,8 +78,7 @@
 - (void)cellTapped:(UITapGestureRecognizer *)tapRecognizer
 {
     CGPoint point = [tapRecognizer locationInView:self];
-//    int c = self.rowAssets.count;
-    int c = 4;
+    int c = self.rowAssets.count;
     CGFloat totalWidth = c * 75 + (c - 1) * 4;
     CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
     
@@ -94,7 +93,6 @@
             if (asset.selected) {
                 asset.index = [[ELCConsole mainConsole] currIndex];
                 [overlayView setIndex:asset.index+1];
-//                NSLog(@"%d",asset.index);
                 [[ELCConsole mainConsole] addIndex:asset.index];
             }
             else
@@ -109,8 +107,7 @@
 
 - (void)layoutSubviews
 {
-//    int c = self.rowAssets.count;
-    int c = 4;
+    int c = self.rowAssets.count;
     CGFloat totalWidth = c * 75 + (c - 1) * 4;
     CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
     

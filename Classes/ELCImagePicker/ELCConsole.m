@@ -54,7 +54,6 @@ static ELCConsole *_maniconsole;
 - (int)currIndex
 {
     [myIndex sortUsingSelector:@selector(compare:)];
-//    NSLog(@"%@",myIndex);
     
     for (int i = 0; i < [myIndex count]; i++) {
         int c = [[myIndex objectAtIndex:i] intValue];
