@@ -13,7 +13,6 @@
 #import "ELCAlbumPickerController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MobileCoreServices/UTCoreTypes.h>
-#import "EYLargePhotoHeader.h"
 #import "ELCConsole.h"
 
 @implementation ELCImagePickerController

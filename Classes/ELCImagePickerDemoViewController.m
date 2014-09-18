@@ -106,9 +106,7 @@
 	for (NSDictionary *dict in info) {
         if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypePhoto){
             if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-                EYLargePhoto *photo = [[EYLargePhoto alloc] init];
-                photo.thumb = [dict objectForKey:UIImagePickerControllerOriginalImage];
-                UIImage* image=photo.thumb;
+                UIImage* image=[dict objectForKey:UIImagePickerControllerOriginalImage];
                 [images addObject:image];
                 
                 UIImageView *imageview = [[UIImageView alloc] initWithImage:image];
@@ -123,9 +121,8 @@
             }
         } else if ([dict objectForKey:UIImagePickerControllerMediaType] == ALAssetTypeVideo){
             if ([dict objectForKey:UIImagePickerControllerOriginalImage]){
-                EYLargePhoto *photo = [[EYLargePhoto alloc] init];
-                photo.thumb = [dict objectForKey:UIImagePickerControllerOriginalImage];
-                UIImage* image=photo.thumb;
+                UIImage* image=[dict objectForKey:UIImagePickerControllerOriginalImage];
+
                 [images addObject:image];
                 
                 UIImageView *imageview = [[UIImageView alloc] initWithImage:image];

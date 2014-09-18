@@ -78,7 +78,7 @@
 - (void)cellTapped:(UITapGestureRecognizer *)tapRecognizer
 {
     CGPoint point = [tapRecognizer locationInView:self];
-    int c = self.rowAssets.count;
+    int c = (int32_t)self.rowAssets.count;
     CGFloat totalWidth = c * 75 + (c - 1) * 4;
     CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
     
@@ -107,7 +107,7 @@
 
 - (void)layoutSubviews
 {
-    int c = self.rowAssets.count;
+    int c = (int32_t)self.rowAssets.count;
     CGFloat totalWidth = c * 75 + (c - 1) * 4;
     CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
     

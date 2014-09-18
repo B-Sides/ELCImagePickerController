@@ -12,6 +12,5 @@
 #import "ELCAlbumPickerController.h"
 #import "ELCImagePickerController.h"
 #import "ELCAssetTablePicker.h"
-#import "EYLargePhotoHeader.h"
 
 #endif
