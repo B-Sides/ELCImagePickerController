@@ -70,13 +70,14 @@
               
                 if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusDenied) {
                     NSString *errorMessage = NSLocalizedString(@"This app does not have access to your photos or videos. You can enable access in Privacy Settings.", nil);
-                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Access denied", nil) message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
+                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Access Denied", nil) message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
                   
                 } else {
                     NSString *errorMessage = [NSString stringWithFormat:@"Album Error: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]];
                     [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
                 }
-                
+
+                [self.navigationItem setTitle:nil];
                 NSLog(@"A problem occured %@", [error description]);	                                 
             };	
                     
