@@ -34,6 +34,8 @@
         
         NSMutableArray *overlayArray = [[NSMutableArray alloc] initWithCapacity:4];
         self.overlayViewArray = overlayArray;
+        
+        self.alignmentLeft = YES;
 	}
 	return self;
 }
@@ -80,7 +82,13 @@
     CGPoint point = [tapRecognizer locationInView:self];
     int c = (int32_t)self.rowAssets.count;
     CGFloat totalWidth = c * 75 + (c - 1) * 4;
-    CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
+    CGFloat startX;
+    
+    if (self.alignmentLeft) {
+        startX = 4;
+    }else {
+        startX = (self.bounds.size.width - totalWidth) / 2;
+    }
     
 	CGRect frame = CGRectMake(startX, 2, 75, 75);
 	
@@ -109,7 +117,13 @@
 {
     int c = (int32_t)self.rowAssets.count;
     CGFloat totalWidth = c * 75 + (c - 1) * 4;
-    CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
+    CGFloat startX;
+    
+    if (self.alignmentLeft) {
+        startX = 4;
+    }else {
+        startX = (self.bounds.size.width - totalWidth) / 2;
+    }
     
 	CGRect frame = CGRectMake(startX, 2, 75, 75);
 	
