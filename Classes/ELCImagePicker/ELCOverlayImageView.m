@@ -21,12 +21,12 @@
 
 - (void)setIndex:(int)_index
 {
-    labIndex.text = [NSString stringWithFormat:@"%d",_index];
+    self.labIndex.text = [NSString stringWithFormat:@"%d",_index];
 }
 
 - (void)dealloc
 {
-    labIndex = nil;
+    self.labIndex = nil;
 }
 
 - (id)initWithImage:(UIImage *)image
@@ -37,17 +37,17 @@
         [self addSubview:img];
         
         if ([[ELCConsole mainConsole] onOrder]) {
-            labIndex = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 16, 16)];
-            labIndex.backgroundColor = [UIColor redColor];
-            labIndex.clipsToBounds = YES;
-            labIndex.textAlignment = NSTextAlignmentCenter;
-            labIndex.textColor = [UIColor whiteColor];
-            labIndex.layer.cornerRadius = 8;
-            labIndex.layer.shouldRasterize = YES;
-            //        labIndex.layer.borderWidth = 1;
-            //        labIndex.layer.borderColor = [UIColor greenColor].CGColor;
-            labIndex.font = [UIFont boldSystemFontOfSize:13];
-            [self addSubview:labIndex];
+            self.labIndex = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 16, 16)];
+            self.labIndex.backgroundColor = [UIColor redColor];
+            self.labIndex.clipsToBounds = YES;
+            self.labIndex.textAlignment = NSTextAlignmentCenter;
+            self.labIndex.textColor = [UIColor whiteColor];
+            self.labIndex.layer.cornerRadius = 8;
+            self.labIndex.layer.shouldRasterize = YES;
+            //        self.labIndex.layer.borderWidth = 1;
+            //        self.labIndex.layer.borderColor = [UIColor greenColor].CGColor;
+            self.labIndex.font = [UIFont boldSystemFontOfSize:13];
+            [self addSubview:self.labIndex];
         }
     }
     return self;

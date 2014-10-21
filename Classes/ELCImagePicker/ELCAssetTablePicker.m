@@ -49,6 +49,9 @@
     }
 
 	[self performSelectorInBackground:@selector(preparePhotos) withObject:nil];
+    
+    // Register for notifications when the photo library has changed
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(preparePhotos) name:ALAssetsLibraryChangedNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,6 +64,7 @@
 {
     [super viewWillDisappear:animated];
     [[ELCConsole mainConsole] removeAllIndex];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ALAssetsLibraryChangedNotification object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -78,13 +82,14 @@
 - (void)preparePhotos
 {
     @autoreleasepool {
-
+        
+        [self.elcAssets removeAllObjects];
         [self.assetGroup enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
             
             if (result == nil) {
                 return;
             }
-
+            
             ELCAsset *elcAsset = [[ELCAsset alloc] initWithAsset:result];
             [elcAsset setParent:self];
             

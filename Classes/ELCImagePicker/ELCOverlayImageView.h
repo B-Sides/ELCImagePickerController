@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ELCOverlayImageView : UIImageView
-{
-    __strong UILabel *labIndex;
-}
+
+@property (nonatomic, strong) UILabel *labIndex;
+
 - (void)setIndex:(int)_index;
+
 @end

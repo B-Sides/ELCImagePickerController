@@ -34,6 +34,8 @@
         
         NSMutableArray *overlayArray = [[NSMutableArray alloc] initWithCapacity:4];
         self.overlayViewArray = overlayArray;
+        
+        self.alignmentLeft = YES;
 	}
 	return self;
 }
@@ -64,6 +66,7 @@
         if (i < [_overlayViewArray count]) {
             ELCOverlayImageView *overlayView = [_overlayViewArray objectAtIndex:i];
             overlayView.hidden = asset.selected ? NO : YES;
+            overlayView.labIndex.text = [NSString stringWithFormat:@"%d", asset.index + 1];
         } else {
             if (overlayImage == nil) {
                 overlayImage = [UIImage imageNamed:@"Overlay.png"];
@@ -80,7 +83,13 @@
     CGPoint point = [tapRecognizer locationInView:self];
     int c = (int32_t)self.rowAssets.count;
     CGFloat totalWidth = c * 75 + (c - 1) * 4;
-    CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
+    CGFloat startX;
+    
+    if (self.alignmentLeft) {
+        startX = 4;
+    }else {
+        startX = (self.bounds.size.width - totalWidth) / 2;
+    }
     
 	CGRect frame = CGRectMake(startX, 2, 75, 75);
 	
@@ -109,7 +118,13 @@
 {
     int c = (int32_t)self.rowAssets.count;
     CGFloat totalWidth = c * 75 + (c - 1) * 4;
-    CGFloat startX = (self.bounds.size.width - totalWidth) / 2;
+    CGFloat startX;
+    
+    if (self.alignmentLeft) {
+        startX = 4;
+    }else {
+        startX = (self.bounds.size.width - totalWidth) / 2;
+    }
     
 	CGRect frame = CGRectMake(startX, 2, 75, 75);
 	
