@@ -8,15 +8,15 @@
 
 #import "ELCConsole.h"
 
-static ELCConsole *_maniconsole;
+static ELCConsole *_mainconsole;
 
 @implementation ELCConsole
 + (ELCConsole *)mainConsole
 {
-    if (!_maniconsole) {
-        _maniconsole = [[ELCConsole alloc] init];
+    if (!_mainconsole) {
+        _mainconsole = [[ELCConsole alloc] init];
     }
-    return _maniconsole;
+    return _mainconsole;
 }
 
 - (id)init
@@ -31,7 +31,7 @@ static ELCConsole *_maniconsole;
 - (void)dealloc
 {
     myIndex = nil;
-    _maniconsole = nil;
+    _mainconsole = nil;
 }
 
 - (void)addIndex:(int)index
