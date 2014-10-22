@@ -193,6 +193,31 @@
         [(NSObject *)self.parent performSelector:@selector(selectedAssets:) withObject:singleAssetArray afterDelay:0];
     }
     
+    int numOfSelectedElements = [[ELCConsole mainConsole] numOfSelectedElements];
+    if (asset.index < numOfSelectedElements - 1) {
+        NSMutableArray *arrayOfCellsToReload = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        for (int i = 0; i < [self.elcAssets count]; i++) {
+            ELCAsset *assetInArray = [self.elcAssets objectAtIndex:i];
+            if (assetInArray.selected && (assetInArray.index > asset.index)) {
+                assetInArray.index -= 1;
+                
+                int row = i / self.columns;
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+                BOOL indexExistsInArray = NO;
+                for (NSIndexPath *indexInArray in arrayOfCellsToReload) {
+                    if (indexInArray.row == indexPath.row) {
+                        indexExistsInArray = YES;
+                        break;
+                    }
+                }
+                if (!indexExistsInArray) {
+                    [arrayOfCellsToReload addObject:indexPath];
+                }
+            }
+        }
+        [self.tableView reloadRowsAtIndexPaths:arrayOfCellsToReload withRowAnimation:UITableViewRowAnimationNone];
+    }
 }
 
 #pragma mark UITableViewDataSource Delegate Methods
