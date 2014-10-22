@@ -74,6 +74,7 @@
             ELCOverlayImageView *overlayView = [[ELCOverlayImageView alloc] initWithImage:overlayImage];
             [_overlayViewArray addObject:overlayView];
             overlayView.hidden = asset.selected ? NO : YES;
+            overlayView.labIndex.text = [NSString stringWithFormat:@"%d", asset.index + 1];
         }
     }
 }
@@ -100,13 +101,14 @@
             ELCOverlayImageView *overlayView = [_overlayViewArray objectAtIndex:i];
             overlayView.hidden = !asset.selected;
             if (asset.selected) {
-                asset.index = [[ELCConsole mainConsole] currIndex];
+                asset.index = [[ELCConsole mainConsole] numOfSelectedElements];
                 [overlayView setIndex:asset.index+1];
                 [[ELCConsole mainConsole] addIndex:asset.index];
             }
             else
             {
-                [[ELCConsole mainConsole] removeIndex:asset.index];
+                int lastElement = [[ELCConsole mainConsole] numOfSelectedElements] - 1;
+                [[ELCConsole mainConsole] removeIndex:lastElement];
             }
             break;
         }

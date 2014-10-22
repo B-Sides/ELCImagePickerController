@@ -17,5 +17,6 @@
 - (void)addIndex:(int)index;
 - (void)removeIndex:(int)index;
 - (int)currIndex;
+- (int)numOfSelectedElements;
 - (void)removeAllIndex;
 @end
